@@ -1,0 +1,4 @@
+LINE_CHANNEL_ID="1234567890"
+LINE_CHANNEL_SECRET="replace-with-line-channel-secret"
+SESSION_PEPPER="replace-with-a-long-random-secret"
+ADMIN_LINE_USER_IDS="Uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

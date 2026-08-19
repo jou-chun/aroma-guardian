@@ -24,13 +24,16 @@
     @media(max-width:800px){.toxin-hero-static,.new-product-static,.clues-actions-static,.label-check-static{grid-template-columns:1fr}.toxin-orbit-static{width:min(410px,80vw)}.toxin-nav{position:static}.toxin-chapter-static{padding:35px}.hair-products{grid-template-columns:1fr}}
     @media(max-width:560px){.toxin-hero-static{gap:55px}.toxin-orbit-static>span{width:62px;height:62px;font-size:.62rem}.exposure-basics,.member-levels,.definition-static,.safety-static,.network-static{grid-template-columns:1fr}.toxin-nav{display:flex;overflow-x:auto}.toxin-nav a{min-width:105px;flex:0 0 auto}.toxin-chapter-static{padding:27px 18px}.toxin-chapter-head{grid-template-columns:1fr;gap:5px}.toxin-chapter-head>span{font-size:2.3rem}.source-static,.actions-static ol{grid-template-columns:1fr}.source-static article{min-height:auto}.contact-scale{align-items:flex-start;flex-direction:column}.contact-scale i{width:2px;height:15px;margin-left:10px}.new-product-static{padding:27px 20px;border-radius:26px}.new-bottle{min-height:360px}}
   </style>
+  <link rel="stylesheet" href="./member.css?v=20260818-1">
+  <script defer src="./member-config.js?v=20260818-1"></script>
+  <script defer src="./member.js?v=20260818-1"></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
       <a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a>
       <nav class="links" aria-label="主要導覽"><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#newProduct">新產品</a><a href="#sleep">認識睡眠</a><a href="#oils">精油資料庫</a><a href="#safety">安全須知</a></nav>
-      <div class="tools"><button id="font">字級</button><button id="contrast">高對比</button></div>
+      <div class="tools"><button class="member-button" id="memberButton" type="button">會員登入</button><button id="font">字級</button><button id="contrast">高對比</button></div>
     </div>
     <div class="advocate">本網站由獨立 doTERRA Wellness Advocate 經營，並非 doTERRA 公司官方網站。</div>
   </header>
@@ -70,6 +73,7 @@
     <section class="safety" id="safety"><div class="wrap safety-panel"><div class="eyebrow">SAFETY FIRST</div><h2>香氣很溫柔，使用仍需有界線</h2><div class="safety-grid"><article><h3>特殊族群先詢問</h3><p>孕哺期、兒童、慢性病、服藥者與寵物家庭，使用前先詢問專業人員。</p></article><article><h3>先少量再觀察</h3><p>低濃度、小範圍、短時間開始；出現刺激、頭暈或不適立即停用。</p></article><article><h3>不取代醫療</h3><p>精油可成為日常芳香照護的一部分，但不能診斷、治療或延誤就醫。</p></article></div></div></section>
   </main>
   <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#newProduct">元氣煥能複方油</a><a href="#sleep">認識睡眠</a><a href="#oils">精油探索</a><a href="#safety">安全須知</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
+  <div class="member-overlay hidden" id="memberOverlay" aria-hidden="true"></div>
   <div id="overlay"></div><button class="launcher" data-chat>問問 AI 芳香助手</button>
   <script src="./oils.js?v=20260610-2"></script>
   <script>
