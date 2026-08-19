@@ -145,7 +145,12 @@ async function finishLineLogin(request, env) {
   });
   const tokenData = await tokenResponse.json().catch(() => ({}));
   if (!tokenResponse.ok || !tokenData.id_token) {
-    console.error("LINE token exchange failed", tokenResponse.status);
+    console.error("LINE token exchange failed", {
+      status: tokenResponse.status,
+      error: tokenData.error || "unknown_error",
+      description: tokenData.error_description || "No description",
+      requestId: tokenResponse.headers.get("x-line-request-id") || ""
+    });
     return frontendRedirect(env, { login_error: "line_exchange_failed" });
   }
 
