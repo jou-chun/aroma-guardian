@@ -11,7 +11,7 @@
 
   if (!button || !overlay) return;
 
-  button.addEventListener("click", openMember);
+  button.addEventListener("click", () => openMember());
   overlay.addEventListener("click", event => {
     if (event.target.matches("[data-member-close]")) closeMember();
   });
@@ -28,6 +28,7 @@
   }
 
   async function openMember(code = "") {
+    code = typeof code === "string" ? code : "";
     overlay.classList.remove("hidden");
     overlay.setAttribute("aria-hidden", "false");
     renderLoading();
