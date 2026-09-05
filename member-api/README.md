@@ -6,9 +6,9 @@
 
 1. 會員按「LINE 會員登入」。
 2. Worker 以 OAuth 2.0 Authorization Code、OpenID Connect、`state`、`nonce` 與 PKCE 向 LINE 驗證身分。
-3. 第一次登入請會員填寫名單上的真實姓名。
-4. 系統只建立「待核對」申請，不會因同名而自動開通。
-5. 管理員以指定的 LINE 帳號登入，在會員中心核對 LINE 顯示名稱與名單姓名。
+3. 第一次登入時，系統以正規化後的 LINE 顯示名稱比對會員名單。
+4. 名稱完全吻合、名單中只有一筆且尚未綁定時，自動綁定 LINE 唯一識別碼。
+5. 名稱不同、重複或已被其他帳號綁定時，才建立「待核對」申請交由管理員處理。
 6. 一般會員只會看到「已開通、姓名核對中、等待付款確認、尚未開通」等狀態，不會收到內部分類或判定原因。
 
 ## 1. 建立 LINE Login Channel
@@ -66,11 +66,13 @@ window.AROMA_MEMBER_CONFIG = Object.freeze({
 ```json
 {
   "rows": [
-    { "sourceKey": "sheet-a-002", "formalName": "範例姓名", "tierCode": "A" },
-    { "sourceKey": "sheet-c-018", "formalName": "另一位範例", "tierCode": "C", "note": "待確認付款" }
+    { "sourceKey": "sheet-lemon-002", "lineDisplayName": "小香🌿", "tierCode": "LEMON" },
+    { "sourceKey": "sheet-frank-018", "lineDisplayName": "芳芳", "tierCode": "FRANKINCENSE", "note": "一年內已完成兩次購買" }
   ]
 }
 ```
+
+`LEMON` 是檸檬會員（年費 NT$300）；`FRANKINCENSE` 是乳香會員（會員費 NT$100，可折抵產品）。會員名單應填寫目前的 LINE 顯示名稱；系統會以完全吻合且唯一的一筆資料自動綁定。
 
 請勿把真正名單存成 JSON、CSV 或 JavaScript 後提交到 GitHub。應由已登入的管理員透過後台 API 匯入，或直接在 Cloudflare D1 的私密環境處理。
 
