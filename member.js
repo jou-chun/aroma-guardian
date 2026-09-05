@@ -100,7 +100,7 @@
     content.append(
       element("div", "member-kicker", "MEMBER ACCESS"),
       element("h2", "", "LINE 會員登入"),
-      element("p", "member-intro", "用 LINE 確認身分後，即可查看自己的開通狀態。第一次登入會請你填寫真實姓名，由管理員核對，不會只靠 LINE 暱稱自動認定。")
+      element("p", "member-intro", "用 LINE 確認身分後，即可查看自己的開通狀態。第一次登入會自動比對會員名單中的 LINE 顯示名稱；名稱不同或重複時，才交由管理員核對。")
     );
     if (message || loginError) {
       content.append(element("div", "member-error", message || loginErrorMessage(loginError)));
@@ -149,8 +149,8 @@
       );
     } else if (membership.state === "pending_review") {
       status.append(
-        element("b", "", "姓名核對中"),
-        element("p", "", `已收到「${membership.submittedName || "你的姓名"}」的綁定申請，管理員核對後即可查看狀態。`)
+        element("b", "", "LINE 名稱核對中"),
+        element("p", "", `系統未能唯一比對「${membership.submittedName || "你的 LINE 顯示名稱"}」，已自動送交管理員核對。`)
       );
     } else if (membership.state === "disabled") {
       status.append(
@@ -159,10 +159,9 @@
       );
     } else {
       status.append(
-        element("b", "", "第一次登入，請核對姓名"),
-        element("p", "", "請填寫名單上使用的真實姓名。為避免同名或冒用，送出後會由管理員人工確認。")
+        element("b", "", "正在比對 LINE 名稱"),
+        element("p", "", "系統會自動以你的 LINE 顯示名稱比對會員名單；若名稱不同或有同名者，將由管理員協助核對。")
       );
-      status.append(buildLinkForm());
     }
     content.append(status);
 
@@ -213,7 +212,7 @@
     content.append(
       element("div", "member-kicker", "ADMIN REVIEW"),
       element("h2", "", "會員核對"),
-      element("p", "member-intro", "這個畫面只會提供給指定的管理員 LINE 帳號。一般會員不會收到名單、內部分類或判定原因。")
+      element("p", "member-intro", "LINE 顯示名稱完全吻合且名單中只有一人時會自動綁定；這裡只處理名稱不同或重複的例外。")
     );
 
     const requests = Array.isArray(dashboard.pendingRequests) ? dashboard.pendingRequests : [];
@@ -266,8 +265,8 @@
   function buildReviewCard(request, members) {
     const card = element("article", "member-admin-card");
     card.append(
-      element("h3", "", request.formalName),
-      element("p", "", `LINE 顯示名稱：${request.lineDisplayName}`)
+      element("h3", "", request.lineDisplayName),
+      element("p", "", "系統未找到唯一且尚未綁定的同名會員，請從名單中選擇。")
     );
     const select = document.createElement("select");
     select.setAttribute("aria-label", `選擇 ${request.formalName} 對應的會員`);
@@ -330,37 +329,6 @@
     const item = element("div");
     item.append(element("b", "", String(value)), element("span", "", label));
     return item;
-  }
-
-  function buildLinkForm() {
-    const form = element("form", "member-form");
-    const label = element("label", "", "真實姓名");
-    label.htmlFor = "memberFormalName";
-    const input = document.createElement("input");
-    input.id = "memberFormalName";
-    input.name = "formalName";
-    input.autocomplete = "name";
-    input.maxLength = 40;
-    input.required = true;
-    input.placeholder = "請輸入名單上的姓名";
-    const submit = element("button", "member-primary", "送出核對申請");
-    submit.type = "submit";
-    const error = element("div", "member-error hidden");
-    form.append(label, input, submit, error);
-    form.addEventListener("submit", async event => {
-      event.preventDefault();
-      submit.disabled = true;
-      error.classList.add("hidden");
-      try {
-        await api("/api/member/link", { method: "POST", body: { formalName: input.value } });
-        await openMember();
-      } catch (cause) {
-        error.textContent = cause.message || "送出失敗，請稍後再試。";
-        error.classList.remove("hidden");
-        submit.disabled = false;
-      }
-    });
-    return form;
   }
 
   async function exchange(code) {
