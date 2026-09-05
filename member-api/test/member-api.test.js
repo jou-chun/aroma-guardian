@@ -3,18 +3,13 @@ import assert from "node:assert/strict";
 import { __test } from "../src/index.js";
 
 test("會員分類預設金額與開通邏輯正確", () => {
-  assert.deepEqual(__test.tierDefaults("A"), {
+  assert.deepEqual(__test.tierDefaults("LEMON"), {
+    supportAmount: 300,
+    accessStatus: "payment_required",
+    paymentStatus: "pending"
+  });
+  assert.deepEqual(__test.tierDefaults("FRANKINCENSE"), {
     supportAmount: 100,
-    accessStatus: "active",
-    paymentStatus: "not_required"
-  });
-  assert.deepEqual(__test.tierDefaults("B"), {
-    supportAmount: 200,
-    accessStatus: "active",
-    paymentStatus: "not_required"
-  });
-  assert.deepEqual(__test.tierDefaults("C"), {
-    supportAmount: 500,
     accessStatus: "payment_required",
     paymentStatus: "pending"
   });
@@ -55,9 +50,27 @@ test("姓名輸入會正規化並拒絕危險或異常內容", () => {
 });
 
 test("只有有效的後台分類代碼會被接受", () => {
-  assert.equal(__test.normalizeTier("a"), "A");
-  assert.equal(__test.normalizeTier("C"), "C");
+  assert.equal(__test.normalizeTier("lemon"), "LEMON");
+  assert.equal(__test.normalizeTier("檸檬會員"), "LEMON");
+  assert.equal(__test.normalizeTier("乳香會員"), "FRANKINCENSE");
+  assert.equal(__test.normalizeTier("B"), "FRANKINCENSE");
   assert.equal(__test.normalizeTier("VIP"), null);
+});
+
+test("只有唯一且尚未綁定的 LINE 名稱可以自動綁定", () => {
+  assert.equal(__test.canAutoLinkCandidates([{ id: 1, line_user_id: null }]), true);
+  assert.equal(__test.canAutoLinkCandidates([{ id: 1, line_user_id: "U123" }]), false);
+  assert.equal(__test.canAutoLinkCandidates([
+    { id: 1, line_user_id: null },
+    { id: 2, line_user_id: null }
+  ]), false);
+  assert.equal(__test.canAutoLinkCandidates([]), false);
+});
+
+test("LINE 顯示名稱正規化後仍採完整名稱比對", () => {
+  assert.equal(__test.normalizeLineDisplayName("  小香🌿  "), "小香🌿");
+  assert.equal(__test.normalizeLineDisplayName("ＡＢＣ"), "ABC");
+  assert.equal(__test.normalizeLineDisplayName(""), null);
 });
 
 test("公開網站程式不含後台分類欄位或分類理由", async () => {
