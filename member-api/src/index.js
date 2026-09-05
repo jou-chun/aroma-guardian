@@ -5,9 +5,8 @@ const OAUTH_TTL_SECONDS = 10 * 60;
 const EXCHANGE_TTL_SECONDS = 2 * 60;
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
 const TIER_DEFAULTS = Object.freeze({
-  A: { supportAmount: 100, accessStatus: "active", paymentStatus: "not_required" },
-  B: { supportAmount: 200, accessStatus: "active", paymentStatus: "not_required" },
-  C: { supportAmount: 500, accessStatus: "payment_required", paymentStatus: "pending" }
+  LEMON: { supportAmount: 300, accessStatus: "payment_required", paymentStatus: "pending" },
+  FRANKINCENSE: { supportAmount: 100, accessStatus: "payment_required", paymentStatus: "pending" }
 });
 
 export default {
@@ -176,6 +175,8 @@ async function finishLineLogin(request, env) {
        last_login_at = excluded.last_login_at`
   ).bind(identity.sub, displayName, safePictureUrl(identity.picture), now, now, now).run();
 
+  await autoLinkMemberByDisplayName(env, identity.sub, displayName, now);
+
   const exchangeCode = randomToken(32);
   await env.DB.batch([
     env.DB.prepare("DELETE FROM login_exchange_codes WHERE expires_at <= ? OR consumed_at IS NOT NULL").bind(now),
@@ -238,6 +239,7 @@ async function authenticate(request, env) {
 }
 
 async function getCurrentUser(request, env, auth) {
+  await autoLinkMemberByDisplayName(env, auth.lineUserId, auth.displayName, unixNow());
   const member = await env.DB.prepare(
     `SELECT formal_name, support_amount, access_status, payment_status
      FROM members WHERE line_user_id = ? LIMIT 1`
@@ -263,30 +265,50 @@ async function logout(request, env, auth) {
 }
 
 async function requestMemberLink(request, env, auth) {
-  const body = await readJson(request);
-  const formalName = normalizeFormalName(body.formalName);
-  if (!formalName) {
-    return json({ error: "請輸入 2～40 個字的真實姓名。" }, 400, request, env);
+  const state = await autoLinkMemberByDisplayName(env, auth.lineUserId, auth.displayName, unixNow());
+  return json({ ok: true, state }, state === "auto_linked" || state === "already_linked" ? 200 : 202, request, env);
+}
+
+async function autoLinkMemberByDisplayName(env, lineUserId, displayName, now = unixNow()) {
+  const existing = await env.DB.prepare("SELECT id FROM members WHERE line_user_id = ? LIMIT 1")
+    .bind(lineUserId).first();
+  if (existing) return "already_linked";
+
+  const matchName = normalizeLineDisplayName(displayName);
+  const matches = matchName
+    ? await env.DB.prepare(
+      "SELECT id, line_user_id FROM members WHERE formal_name = ? ORDER BY id LIMIT 2"
+    ).bind(matchName).all()
+    : { results: [] };
+  const candidates = Array.isArray(matches.results) ? matches.results : [];
+
+  if (canAutoLinkCandidates(candidates)) {
+    const linked = await env.DB.prepare(
+      "UPDATE members SET line_user_id = ?, updated_at = ? WHERE id = ? AND line_user_id IS NULL"
+    ).bind(lineUserId, now, candidates[0].id).run();
+    if (Number(linked.meta?.changes || 0) === 1) {
+      await env.DB.prepare(
+        `UPDATE link_requests
+         SET status = 'approved', matched_member_id = ?, reviewed_at = ?
+         WHERE line_user_id = ? AND status = 'pending'`
+      ).bind(candidates[0].id, now, lineUserId).run();
+      await audit(env, lineUserId, "link.auto", "member", candidates[0].id, { displayName: matchName });
+      return "auto_linked";
+    }
   }
 
-  const linked = await env.DB.prepare("SELECT id FROM members WHERE line_user_id = ? LIMIT 1")
-    .bind(auth.lineUserId).first();
-  if (linked) return json({ ok: true, state: "already_linked" }, 200, request, env);
-
-  const now = unixNow();
   const pending = await env.DB.prepare(
     "SELECT id FROM link_requests WHERE line_user_id = ? AND status = 'pending' LIMIT 1"
-  ).bind(auth.lineUserId).first();
+  ).bind(lineUserId).first();
   if (pending) {
     await env.DB.prepare("UPDATE link_requests SET formal_name = ?, created_at = ? WHERE id = ?")
-      .bind(formalName, now, pending.id).run();
+      .bind(matchName || "LINE 使用者", now, pending.id).run();
   } else {
     await env.DB.prepare(
       "INSERT INTO link_requests (line_user_id, formal_name, status, created_at) VALUES (?, ?, 'pending', ?)"
-    ).bind(auth.lineUserId, formalName, now).run();
+    ).bind(lineUserId, matchName || "LINE 使用者", now).run();
   }
-
-  return json({ ok: true, state: "pending_review" }, 202, request, env);
+  return candidates.length > 1 ? "duplicate_review" : "manual_review";
 }
 
 async function routeAdmin(request, env, url, auth) {
@@ -336,7 +358,7 @@ async function importMembers(request, env, auth) {
   const statements = [];
   for (let index = 0; index < body.rows.length; index += 1) {
     const row = body.rows[index] || {};
-    const formalName = normalizeFormalName(row.formalName);
+    const formalName = normalizeLineDisplayName(row.lineDisplayName ?? row.formalName);
     const tierCode = normalizeTier(row.tierCode);
     const sourceKey = cleanSourceKey(row.sourceKey || `manual-${now}-${index + 1}`);
     if (!formalName || !tierCode || !sourceKey) {
@@ -437,16 +459,11 @@ async function updateMember(request, env, auth, memberId) {
     ? (tierChanged ? defaults.accessStatus : existing.access_status)
     : body.accessStatus;
 
-  if (tierCode === "A" || tierCode === "B") {
-    paymentStatus = "not_required";
-    if (accessStatus === "payment_required") accessStatus = "active";
-  } else {
-    if (!new Set(["pending", "paid"]).has(paymentStatus)) {
-      return json({ error: "付款狀態不正確。" }, 400, request, env);
-    }
-    if (paymentStatus === "paid" && accessStatus === "payment_required") accessStatus = "active";
-    if (paymentStatus === "pending" && accessStatus === "active") accessStatus = "payment_required";
+  if (!new Set(["pending", "paid"]).has(paymentStatus)) {
+    return json({ error: "付款狀態不正確。" }, 400, request, env);
   }
+  if (paymentStatus === "paid" && accessStatus === "payment_required") accessStatus = "active";
+  if (paymentStatus === "pending" && accessStatus === "active") accessStatus = "payment_required";
   if (!new Set(["active", "payment_required", "disabled"]).has(accessStatus)) {
     return json({ error: "開通狀態不正確。" }, 400, request, env);
   }
@@ -514,7 +531,17 @@ function tierDefaults(tierCode) {
 
 function normalizeTier(value) {
   const tier = String(value || "").trim().toUpperCase();
-  return Object.hasOwn(TIER_DEFAULTS, tier) ? tier : null;
+  const aliases = {
+    A: "LEMON",
+    B: "FRANKINCENSE",
+    C: "FRANKINCENSE",
+    "檸檬": "LEMON",
+    "檸檬會員": "LEMON",
+    "乳香": "FRANKINCENSE",
+    "乳香會員": "FRANKINCENSE"
+  };
+  const normalized = aliases[tier] || tier;
+  return Object.hasOwn(TIER_DEFAULTS, normalized) ? normalized : null;
 }
 
 function normalizeFormalName(value) {
@@ -522,6 +549,16 @@ function normalizeFormalName(value) {
   const name = value.normalize("NFKC").replace(/\s+/g, " ").trim();
   if (name.length < 2 || name.length > 40 || /[<>\u0000-\u001F\u007F]/u.test(name)) return null;
   return name;
+}
+
+function normalizeLineDisplayName(value) {
+  if (typeof value !== "string") return null;
+  const name = value.normalize("NFKC").replace(/[\u0000-\u001F\u007F]/gu, "").trim();
+  return name.length >= 1 && name.length <= 80 ? name : null;
+}
+
+function canAutoLinkCandidates(candidates) {
+  return Array.isArray(candidates) && candidates.length === 1 && !candidates[0].line_user_id;
 }
 
 function cleanDisplayName(value) {
@@ -648,6 +685,8 @@ function base64Url(bytes) {
 }
 
 export const __test = {
+  canAutoLinkCandidates,
+  normalizeLineDisplayName,
   normalizeFormalName,
   normalizeTier,
   publicMembership,
