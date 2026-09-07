@@ -27,15 +27,17 @@
   <style>
     .tools a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#fff;color:var(--sage);font-size:.7rem;font-weight:800}
   </style>
-  <link rel="stylesheet" href="./member.css?v=20260818-1">
+  <link rel="stylesheet" href="./member.css?v=20260905-2">
+  <link rel="stylesheet" href="./seasonal.css?v=20260907-1">
   <script defer src="./member-config.js?v=20260818-1"></script>
-  <script defer src="./member.js?v=20260905-1"></script>
+  <script defer src="./member.js?v=20260905-2"></script>
+  <script defer src="./seasonal.js?v=20260907-1"></script>
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
       <a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a>
-      <nav class="links" aria-label="主要導覽"><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#newProduct">新產品</a><a href="#sleep">認識睡眠</a><a href="#oils">精油資料庫</a><a href="./membership.html">會員制度</a></nav>
+      <nav class="links" aria-label="主要導覽"><a href="#seasonal">節氣照護</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#sleep">認識睡眠</a><a href="#oils">精油資料庫</a></nav>
       <div class="tools"><a href="./membership.html">會員制度</a><button class="member-button" id="memberButton" type="button">會員登入</button><button id="font">字級</button><button id="contrast">高對比</button></div>
     </div>
     <div class="advocate">本網站由獨立 doTERRA Wellness Advocate 經營，並非 doTERRA 公司官方網站。</div>
@@ -47,6 +49,25 @@
     </div></section>
 
     <section class="section"><div class="wrap"><div class="heading center"><div class="eyebrow">START HERE</div><h2>這個網站不只是一張精油清單</h2><p>先選問題、再看理由與安全方法，最後才決定哪一款香氣適合當下。</p></div><div class="paths"><a class="path" href="#oils"><span class="num">01</span><h3>認識單方精油</h3><p>從一種植物開始，了解香氣、成分與適合的日常情境。</p><b>查看 54 款單方 →</b></a><a class="path" href="#oils"><span class="num">02</span><h3>探索複方精油</h3><p>看懂不同香氣如何搭配，依生活節奏找到方向。</p><b>查看 32 款複方 →</b></a><a class="path" href="#guide"><span class="num">03</span><h3>學會安全使用</h3><p>掌握擴香、嗅吸與稀釋外用，避開常見風險。</p><b>前往使用指南 →</b></a><a class="path" href="#toxins"><span class="num">04</span><h3>五大隱形毒素</h3><p>認識空氣、黴菌、清潔、容器與皮膚接觸中的日常暴露。</p><b>建立生活防護網 →</b></a></div></div></section>
+
+    <section class="section seasonal" id="seasonal" aria-labelledby="seasonalTitle"><div class="wrap">
+      <div class="seasonal-head"><div><div class="eyebrow">24 SOLAR TERMS · 白露</div><h2 id="seasonalTitle">涼意初生，跟著節氣照顧呼吸</h2><p class="lead">白露後早晚轉涼、空氣漸乾。從空間香氣、胸前塗抹到三次慢呼吸，選一個現在做得到的小步驟。</p></div><div class="seasonal-stamp" aria-label="目前節氣：白露"><small>本期節氣</small><strong>白露</strong><span>養肺潤燥</span></div></div>
+      <div class="seasonal-guide">
+        <div class="breath-panel">
+          <div class="breath-orbit" id="breathOrbit" aria-hidden="true"><span></span><b id="breathCue">準備</b></div>
+          <p id="breathTimer" aria-live="polite">按下開始，跟著做三次舒服的慢呼吸</p>
+          <button class="btn seasonal-start" id="seasonalStart" type="button">開始跟著做</button>
+          <button class="seasonal-stop hidden" id="seasonalStop" type="button">停止引導</button>
+        </div>
+        <div class="seasonal-steps" id="seasonalSteps">
+          <article data-season-step="0"><span>01</span><div><small>空間照護</small><h3>順暢清新複方擴香</h3><p>在擴香儀中加入2～3滴，保持空氣流通，先從短時間使用開始。</p></div></article>
+          <article data-season-step="1"><span>02</span><div><small>咳嗽、感覺呼吸不順時</small><h3>複方＋尤加利單方</h3><p>將順暢清新複方與尤加利單方以分餾椰子油適度稀釋，再輕柔塗抹於胸前。</p></div></article>
+          <article data-season-step="2"><span>03</span><div><small>慢慢回到身體</small><h3>配合三次舒服的呼吸</h3><p>肩膀放鬆，不用刻意吸得很深；如果香氣或呼吸讓你不舒服，立即停止。</p></div></article>
+        </div>
+      </div>
+      <div class="seasonal-safety"><b>先確認安全</b><span>外用前先稀釋並做局部測試。孕哺期、兒童、正在接受治療者或敏感肌膚，請先確認產品標示或詢問專業人員。</span><strong>若出現明顯呼吸困難、胸痛、嘴唇發紫或症狀持續加重，請立即就醫。</strong></div>
+      <p class="source-note">芳香照護只作日常陪伴，不能診斷、治療疾病或取代醫療處置。</p>
+    </div></section>
 
     <section class="section topics-bg" id="topics"><div class="wrap"><div class="heading center"><div class="eyebrow">ASK BY TOPIC</div><h2>依日常照護主題提問</h2><p>每一個主題都有獨立整理的精油順序與安全建議，不再用同一組睡眠精油回答所有問題。</p></div><div class="topics" id="topicGrid"></div><p class="source-note">主題分類只用於芳香教育與生活情境探索，不代表醫療診斷或治療分類。</p></div></section>
 
@@ -75,7 +96,7 @@
     <section class="section guide" id="guide"><div class="wrap guide-grid"><div><div class="eyebrow">HOW TO USE</div><h2>簡單三步，安心開始芳香生活</h2><p>精油濃度高，少量、稀釋、觀察反應是最重要的基本原則。本站不提供內服建議。</p></div><div class="methods"><div class="method"><span>01</span><div><h3>擴香</h3><p>依設備說明少量使用，保持空氣流通，從短時間開始並觀察家人與寵物反應。</p></div></div><div class="method"><span>02</span><div><h3>嗅吸</h3><p>使用嗅吸棒或紙巾，保持適當距離輕柔嗅聞；不舒服時立即停止並移到通風處。</p></div></div><div class="method"><span>03</span><div><h3>稀釋外用</h3><p>以植物油稀釋並做小範圍測試，避免眼周、黏膜、耳內與受損肌膚。</p></div></div></div></div></section>
     <section class="safety" id="safety"><div class="wrap safety-panel"><div class="eyebrow">SAFETY FIRST</div><h2>香氣很溫柔，使用仍需有界線</h2><div class="safety-grid"><article><h3>特殊族群先詢問</h3><p>孕哺期、兒童、慢性病、服藥者與寵物家庭，使用前先詢問專業人員。</p></article><article><h3>先少量再觀察</h3><p>低濃度、小範圍、短時間開始；出現刺激、頭暈或不適立即停用。</p></article><article><h3>不取代醫療</h3><p>精油可成為日常芳香照護的一部分，但不能診斷、治療或延誤就醫。</p></article></div></div></section>
   </main>
-  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#newProduct">元氣煥能複方油</a><a href="#sleep">認識睡眠</a><a href="#oils">精油探索</a><a href="./membership.html">會員制度</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
+  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#seasonal">節氣照護</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#newProduct">元氣煥能複方油</a><a href="#sleep">認識睡眠</a><a href="#oils">精油探索</a><a href="./membership.html">會員制度</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
   <div class="member-overlay hidden" id="memberOverlay" aria-hidden="true"></div>
   <div id="overlay"></div><button class="launcher" data-chat>問問 AI 芳香助手</button>
   <script src="./oils.js?v=20260610-2"></script>

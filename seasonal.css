@@ -1,0 +1,33 @@
+.seasonal{overflow:hidden;background:radial-gradient(circle at 12% 16%,#dceae8 0 10%,transparent 10.5%),linear-gradient(145deg,#eef5f1,#f8f4ea)}
+.seasonal-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;margin-bottom:44px}
+.seasonal-head h2{max-width:780px;margin-bottom:16px}
+.seasonal-stamp{display:grid;place-items:center;width:190px;aspect-ratio:1;border:1px solid #55797033;border-radius:50%;background:#ffffffba;box-shadow:inset 0 0 0 16px #ffffff73,0 24px 60px #385b4d18;text-align:center}
+.seasonal-stamp small{align-self:end;color:#607970;font-size:.7rem;font-weight:800;letter-spacing:.15em}
+.seasonal-stamp strong{font:800 3rem/1 "Noto Serif TC","Songti TC",serif;letter-spacing:.08em}
+.seasonal-stamp span{align-self:start;color:#8b765d;font-size:.78rem;font-weight:800;letter-spacing:.12em}
+.seasonal-guide{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
+.breath-panel{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:520px;padding:34px;border:1px solid #486b6030;border-radius:34px;background:#23463d;color:#fff;text-align:center;box-shadow:0 26px 70px #29493d24}
+.breath-orbit{position:relative;display:grid;place-items:center;width:min(260px,66vw);aspect-ratio:1;margin-bottom:30px;border:1px solid #d9eee75c;border-radius:50%}
+.breath-orbit:before,.breath-orbit span{position:absolute;border-radius:50%;content:""}
+.breath-orbit:before{inset:17%;border:1px dashed #d9eee770}
+.breath-orbit span{inset:30%;background:radial-gradient(circle,#f9ddba,#b8d4c8);box-shadow:0 0 55px #d8eadb5c}
+.breath-orbit b{position:relative;z-index:1;color:#233f37;font:800 1rem "Noto Serif TC","Songti TC",serif;letter-spacing:.12em}
+.breath-orbit.is-running span{animation:seasonal-breathe 8s ease-in-out infinite}
+.breath-panel p{min-height:54px;max-width:310px;margin:0 0 18px;color:#d7e5df}
+.seasonal-start{border-color:#f2c8a1;background:#f2c8a1;color:#29453d}
+.seasonal-stop{margin-top:12px;border:0;background:transparent;color:#d7e5df;text-decoration:underline;text-underline-offset:4px}
+.seasonal-steps{display:grid;gap:12px}
+.seasonal-steps article{display:grid;grid-template-columns:64px 1fr;align-items:start;min-height:158px;padding:27px;border:1px solid #486b6024;border-radius:25px;background:#ffffffdb;gap:19px;transition:border-color .25s,box-shadow .25s,transform .25s,background .25s}
+.seasonal-steps article>span{display:grid;place-items:center;width:56px;height:56px;border-radius:18px;background:#e2ece6;color:#53705c;font:800 1rem "Noto Serif TC","Songti TC",serif}
+.seasonal-steps article small{display:block;margin-bottom:5px;color:#8a765e;font-size:.68rem;font-weight:800;letter-spacing:.08em}
+.seasonal-steps article h3{margin:0 0 6px;font:800 1.1rem "Noto Serif TC","Songti TC",serif}
+.seasonal-steps article p{margin:0;color:#65736c;font-size:.86rem}
+.seasonal-steps article.is-active{border-color:#537a6d;background:#fff;box-shadow:0 20px 45px #304d421c;transform:translateX(-8px)}
+.seasonal-steps article.is-active>span{background:#53705c;color:#fff}
+.seasonal-safety{display:grid;grid-template-columns:auto 1fr;align-items:start;padding:21px 24px;margin-top:22px;border-radius:20px;background:#fff1e7;gap:5px 18px;color:#675a51;font-size:.82rem}
+.seasonal-safety b{grid-row:1/3;color:#8a5b44;font-family:"Noto Serif TC","Songti TC",serif}
+.seasonal-safety strong{font-weight:800;color:#7b423e}
+@keyframes seasonal-breathe{0%,100%{transform:scale(.72);opacity:.72}50%{transform:scale(1.45);opacity:1}}
+@media(prefers-reduced-motion:reduce){.breath-orbit.is-running span{animation:none}.seasonal-steps article{transition:none}}
+@media(max-width:800px){.seasonal-head{grid-template-columns:1fr}.seasonal-stamp{width:160px}.seasonal-guide{grid-template-columns:1fr}.breath-panel{min-height:450px}.seasonal-steps article.is-active{transform:none}}
+@media(max-width:560px){.seasonal-head{gap:24px;margin-bottom:28px}.seasonal-stamp{width:142px}.seasonal-stamp strong{font-size:2.35rem}.breath-panel{min-height:420px;padding:26px 18px;border-radius:27px}.seasonal-steps article{grid-template-columns:50px 1fr;min-height:auto;padding:21px 17px;gap:13px}.seasonal-steps article>span{width:46px;height:46px;border-radius:14px}.seasonal-safety{grid-template-columns:1fr}.seasonal-safety b{grid-row:auto}}
