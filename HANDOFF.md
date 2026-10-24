@@ -24,7 +24,7 @@
 - `index.html`：首頁內容、所有主要專題區塊及既有前端邏輯入口。
 - `care-path.css`：四座照護小島、三步動畫、長者與職場專區的版面及響應式樣式。
 - `care-path.js`：四種照護對象的路線資料、點選互動、動畫與內容導向。
-- `assets/elder-hand-care.png`：長者專區的手部照護圖片。
+- `assets/elder-hand-care.jpg`：長者專區的手部照護圖片（網頁最佳化版本）。
 - `seasonal.css` / `seasonal.js`：白露節氣照護與呼吸動畫。
 - `oils.js`：精油資料庫資料。
 - `member.css` / `member.js` / `member-config.js`：LINE 會員登入與會員畫面。
