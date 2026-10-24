@@ -36,11 +36,84 @@
   const routeLinks = document.querySelector("#needRouteLinks");
   const moreButton = document.querySelector("#needMore");
   const card = document.querySelector("#acupointCard");
+  const mapPanel = document.querySelector(".acupoint-map-panel");
+  const dropWalker = document.querySelector("#dropWalker");
+  const dropGuideText = document.querySelector("#dropGuideText");
+  const dropRouteSvg = document.querySelector("#dropRouteSvg");
+  const dropRoutePath = document.querySelector("#dropRoutePath");
+  const dropRouteTarget = document.querySelector("#dropRouteTarget");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let currentPoint = 0;
+  let walkerPosition = {x:22,y:22};
+  let walkerAnimation;
+  let resizeTimer;
 
   routeGrid.innerHTML = routes.map((route,index) => `<button class="need-route" type="button" data-route="${route.id}" aria-pressed="false" ${index > 5 ? "hidden" : ""} style="--route:${route.color};--route-soft:${route.soft}"><span class="need-route-icon" aria-hidden="true">${route.icon}</span><b>${route.name}</b><small>${route.short}</small></button>`).join("");
 
-  function selectPoint(id, shouldScroll = false) {
+  function moveDropToPoint(point, replayFromStart = false, animate = true) {
+    const dot = pointDots.querySelector(`[data-point="${point.id}"]`);
+    if (!dot || !mapPanel || !dropWalker || !dropRouteSvg || !dropRoutePath || !dropRouteTarget) return;
+    if (walkerAnimation) walkerAnimation.cancel();
+
+    const panelRect = mapPanel.getBoundingClientRect();
+    const dotRect = dot.getBoundingClientRect();
+    const walkerSize = dropWalker.offsetWidth;
+    const home = {x:parseFloat(getComputedStyle(dropWalker).left) || 22,y:parseFloat(getComputedStyle(dropWalker).top) || 22};
+    const pointCenter = {x:dotRect.left - panelRect.left + dotRect.width / 2,y:dotRect.top - panelRect.top + dotRect.height / 2};
+    const start = replayFromStart ? home : walkerPosition;
+    const placeRight = pointCenter.x > panelRect.width * .55;
+    const destination = {
+      x:Math.max(14,Math.min(panelRect.width - walkerSize - 14,placeRight ? pointCenter.x + 44 : pointCenter.x - walkerSize - 44)),
+      y:Math.max(92,Math.min(panelRect.height - walkerSize - 42,pointCenter.y - walkerSize * .5))
+    };
+    const startCenter = {x:start.x + walkerSize / 2,y:start.y + walkerSize / 2};
+    const destinationCenter = {x:destination.x + walkerSize / 2,y:destination.y + walkerSize / 2};
+    const bend = Math.max(28,Math.min(72,Math.abs(destinationCenter.x - startCenter.x) * .22));
+    const control = {x:(startCenter.x + destinationCenter.x) / 2,y:Math.min(startCenter.y,destinationCenter.y) - bend};
+
+    dropGuideText.textContent = `小水滴正帶你走到「${point.name}」`;
+    dropRouteSvg.setAttribute("viewBox",`0 0 ${panelRect.width} ${panelRect.height}`);
+    dropRoutePath.setAttribute("d",`M ${startCenter.x} ${startCenter.y} Q ${control.x} ${control.y} ${destinationCenter.x} ${destinationCenter.y} L ${pointCenter.x} ${pointCenter.y}`);
+    dropRouteTarget.setAttribute("cx",pointCenter.x);
+    dropRouteTarget.setAttribute("cy",pointCenter.y);
+    const routeLength = dropRoutePath.getTotalLength();
+    dropRoutePath.style.strokeDasharray = `${routeLength}`;
+    dropRoutePath.style.strokeDashoffset = `${routeLength}`;
+    dropRouteSvg.classList.remove("is-drawing");
+    void dropRouteSvg.getBoundingClientRect();
+    dropRouteSvg.classList.add("is-drawing");
+
+    const shouldAnimate = animate && !reduceMotion.matches;
+    if (replayFromStart) {
+      walkerPosition = home;
+      dropWalker.style.transform = `translate(${home.x - home.x}px,${home.y - home.y}px)`;
+    }
+    if (!shouldAnimate) {
+      dropWalker.style.transform = `translate(${destination.x - home.x}px,${destination.y - home.y}px)`;
+      dropRoutePath.style.strokeDashoffset = "0";
+      walkerPosition = destination;
+      dropGuideText.textContent = `小水滴已帶你找到「${point.name}」`;
+      return;
+    }
+
+    const frames = Array.from({length:9},(_,index) => {
+      const t = index / 8;
+      const x = (1-t)*(1-t)*start.x + 2*(1-t)*t*(control.x-walkerSize/2) + t*t*destination.x;
+      const y = (1-t)*(1-t)*start.y + 2*(1-t)*t*(control.y-walkerSize/2) + t*t*destination.y;
+      return {transform:`translate(${x-home.x}px,${y-home.y}px)`,offset:t};
+    });
+    dropWalker.classList.add("is-walking");
+    dropRoutePath.animate([{strokeDashoffset:routeLength},{strokeDashoffset:0}],{duration:1450,easing:"ease-in-out",fill:"forwards"});
+    walkerAnimation = dropWalker.animate(frames,{duration:1250,easing:"cubic-bezier(.45,.05,.2,1)",fill:"forwards"});
+    walkerAnimation.addEventListener("finish",() => {
+      dropWalker.style.transform = `translate(${destination.x-home.x}px,${destination.y-home.y}px)`;
+      dropWalker.classList.remove("is-walking");
+      dropGuideText.textContent = `小水滴已帶你找到「${point.name}」`;
+    },{once:true});
+    walkerPosition = destination;
+  }
+
+  function selectPoint(id, shouldScroll = false, replayFromStart = false) {
     const index = points.findIndex(point => point.id === id);
     if (index < 0) return;
     currentPoint = index;
@@ -62,6 +135,7 @@
       selectRoute(button.dataset.relatedRoute);
       document.querySelector("#needRoutes").scrollIntoView({behavior:"smooth",block:"start"});
     }));
+    requestAnimationFrame(() => moveDropToPoint(point,replayFromStart));
     if (shouldScroll) document.querySelector("#acupoints").scrollIntoView({behavior:"smooth",block:"start"});
   }
 
@@ -99,7 +173,12 @@
   pointDots.querySelectorAll(".acupoint-dot").forEach(button => button.addEventListener("click", () => selectPoint(button.dataset.point)));
   document.querySelector("#acupointPrev").addEventListener("click", () => selectPoint(points[(currentPoint - 1 + points.length) % points.length].id));
   document.querySelector("#acupointNext").addEventListener("click", () => selectPoint(points[(currentPoint + 1) % points.length].id));
-  document.querySelector("#acupointReplay").addEventListener("click", () => selectPoint(points[currentPoint].id));
+  document.querySelector("#acupointReplay").addEventListener("click", () => selectPoint(points[currentPoint].id,false,true));
+
+  window.addEventListener("resize",() => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => moveDropToPoint(points[currentPoint],false,false),120);
+  });
 
   selectPoint(points[0].id);
 })();

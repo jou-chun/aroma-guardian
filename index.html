@@ -30,12 +30,12 @@
   <link rel="stylesheet" href="./member.css?v=20260905-2">
   <link rel="stylesheet" href="./seasonal.css?v=20260907-1">
   <link rel="stylesheet" href="./care-path.css?v=20261024-1">
-  <link rel="stylesheet" href="./acupoint-guide.css?v=20261024-2">
+  <link rel="stylesheet" href="./acupoint-guide.css?v=20261024-3">
   <script defer src="./member-config.js?v=20260818-1"></script>
   <script defer src="./member.js?v=20260905-2"></script>
   <script defer src="./animated-guide.js?v=20261024-1"></script>
   <script defer src="./care-path.js?v=20261024-1"></script>
-  <script defer src="./acupoint-guide.js?v=20261024-1"></script>
+  <script defer src="./acupoint-guide.js?v=20261024-2"></script>
   <link rel="stylesheet" href="./animated-guide.css?v=20261024-1">
 </head>
 <body>
@@ -87,7 +87,9 @@
       <div class="acupoint-heading"><div><div class="eyebrow">TRADITIONAL SELF-CARE MAP</div><h2 id="acupointTitle">小水滴帶路・中醫穴道照護</h2><p>從身體位置開始找，不需要背名稱。點一下圖上的光點，小水滴會帶你看位置、輕柔做法與安全提醒。</p></div><div class="acupoint-series-badge"><b>11</b><span>個常見穴位<br>第一輯</span></div></div>
       <div class="acupoint-explorer">
         <div class="acupoint-map-panel">
-          <div class="drop-guide"><img class="drop-logo" src="./assets/little-drop-logo.png" width="82" height="82" alt="小水滴芳香生活 Logo"><p>跟著身上的光點找找看！</p></div>
+          <div class="drop-guide" aria-live="polite"><span aria-hidden="true"></span><p id="dropGuideText">小水滴準備帶你找百會</p></div>
+          <svg class="drop-route-svg" id="dropRouteSvg" aria-hidden="true"><path id="dropRoutePath"></path><circle id="dropRouteTarget" r="6"></circle></svg>
+          <div class="drop-walker" id="dropWalker" aria-hidden="true"><img class="drop-logo" src="./assets/little-drop-logo.png" width="82" height="82" alt=""></div>
           <div class="body-map" id="bodyMap" role="group" aria-label="人體穴位位置示意圖">
             <div class="body-silhouette" aria-hidden="true"><span class="body-head"></span><span class="body-neck"></span><span class="body-torso"></span><span class="body-arm left"></span><span class="body-arm right"></span><span class="body-leg left"></span><span class="body-leg right"></span></div>
             <div id="acupointDots"></div>
