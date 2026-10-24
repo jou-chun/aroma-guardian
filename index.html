@@ -30,17 +30,19 @@
   <link rel="stylesheet" href="./member.css?v=20260905-2">
   <link rel="stylesheet" href="./seasonal.css?v=20260907-1">
   <link rel="stylesheet" href="./care-path.css?v=20261024-1">
+  <link rel="stylesheet" href="./acupoint-guide.css?v=20261024-1">
   <script defer src="./member-config.js?v=20260818-1"></script>
   <script defer src="./member.js?v=20260905-2"></script>
   <script defer src="./animated-guide.js?v=20261024-1"></script>
   <script defer src="./care-path.js?v=20261024-1"></script>
+  <script defer src="./acupoint-guide.js?v=20261024-1"></script>
   <link rel="stylesheet" href="./animated-guide.css?v=20261024-1">
 </head>
 <body>
   <header class="top">
     <div class="wrap nav">
       <a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a>
-      <nav class="links" aria-label="主要導覽"><a href="#seasonal">節氣照護</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#sleep">認識睡眠</a><a href="#oils">精油資料庫</a></nav>
+      <nav class="links" aria-label="主要導覽"><a href="#needRoutes">照護路線</a><a href="#acupoints">中醫穴道</a><a href="#seasonal">節氣照護</a><a href="#toxins">生活防護網</a><a href="#oils">精油資料庫</a></nav>
       <div class="tools"><a href="./membership.html">會員制度</a><button class="member-button" id="memberButton" type="button">會員登入</button><button id="font">字級</button><button id="contrast">高對比</button></div>
     </div>
     <div class="advocate">本網站由獨立 doTERRA Wellness Advocate 經營，並非 doTERRA 公司官方網站。</div>
@@ -67,6 +69,42 @@
         </div>
       </div>
       <p class="care-path-note">芳香照護用於日常生活陪伴；若有明顯、持續或加重的不適，請優先尋求專業醫療協助。</p>
+    </div></section>
+
+    <section class="section need-routes" id="needRoutes" aria-labelledby="needRoutesTitle"><div class="wrap">
+      <div class="need-routes-head"><div><div class="eyebrow">FROM NEED TO CARE</div><h2 id="needRoutesTitle">你現在，想照顧什麼？</h2><p>照顧對象是四座小島；睡眠、呼吸、痠痛等需求則像路線，帶你走向合適的內容與安全做法。</p></div><div class="point-line-key" aria-label="網站內容結構"><span><i></i>點・具體內容</span><span><i></i>線・照護需求</span><span><i></i>面・照顧對象</span></div></div>
+      <div class="need-route-grid" id="needRouteGrid" aria-label="選擇照護需求"></div>
+      <button class="need-more" id="needMore" type="button" aria-expanded="false">展開更多照護路線 <span>＋</span></button>
+      <div class="need-route-result" id="needRouteResult" aria-live="polite">
+        <div class="need-route-line" aria-hidden="true"><span></span><i></i><b></b></div>
+        <div><small id="needRouteKicker">CARE ROUTE</small><h3 id="needRouteName">點選一條路線，看看它會帶你去哪裡</h3><p id="needRouteSummary">先從當下的需要開始，不必先記住精油或穴位名稱。</p></div>
+        <div class="need-route-links" id="needRouteLinks"></div>
+      </div>
+      <p class="need-route-note">需求分類是日常照護導覽，不是疾病判斷。若有突然、明顯、持續或加重的不適，請先尋求醫療協助。</p>
+    </div></section>
+
+    <section class="section acupoint-section" id="acupoints" aria-labelledby="acupointTitle"><div class="wrap">
+      <div class="acupoint-heading"><div><div class="eyebrow">TRADITIONAL SELF-CARE MAP</div><h2 id="acupointTitle">小水滴帶路・中醫穴道照護</h2><p>從身體位置開始找，不需要背名稱。點一下圖上的光點，小水滴會帶你看位置、輕柔做法與安全提醒。</p></div><div class="acupoint-series-badge"><b>11</b><span>個常見穴位<br>第一輯</span></div></div>
+      <div class="acupoint-explorer">
+        <div class="acupoint-map-panel">
+          <div class="drop-guide" aria-hidden="true"><div class="drop-mascot"><span class="drop-eye left"></span><span class="drop-eye right"></span><span class="drop-smile"></span><span class="drop-arm"></span></div><p>跟著身上的光點找找看！</p></div>
+          <div class="body-map" id="bodyMap" role="group" aria-label="人體穴位位置示意圖">
+            <div class="body-silhouette" aria-hidden="true"><span class="body-head"></span><span class="body-neck"></span><span class="body-torso"></span><span class="body-arm left"></span><span class="body-arm right"></span><span class="body-leg left"></span><span class="body-leg right"></span></div>
+            <div id="acupointDots"></div>
+          </div>
+          <div class="body-view-note"><span></span>正面／背面位置以文字說明為準，圖示只協助辨認大約區域。</div>
+        </div>
+        <article class="acupoint-card" id="acupointCard" aria-live="polite">
+          <div class="acupoint-card-top"><div><small id="acupointRegion">頭頸部</small><h3 id="acupointName">百會</h3><p id="acupointPinyin">BAIHUI · GV20</p></div><span id="acupointIndex">01</span></div>
+          <div class="acupoint-info"><section><h4>位置怎麼找</h4><p id="acupointLocation"></p></section><section><h4>傳統照護參考</h4><p id="acupointCare"></p></section></div>
+          <div class="acupoint-how"><span class="touch-pulse" aria-hidden="true"><i></i></span><div><h4>跟著做</h4><ol id="acupointSteps"></ol></div></div>
+          <div class="acupoint-related"><b>可連到這些照護路線</b><div id="acupointRelated"></div></div>
+          <div class="acupoint-warning" id="acupointWarning"></div>
+          <div class="acupoint-controls"><button type="button" id="acupointPrev" aria-label="上一個穴位">← 上一個</button><button type="button" id="acupointReplay">再看一次動作</button><button type="button" id="acupointNext" aria-label="下一個穴位">下一個 →</button></div>
+        </article>
+      </div>
+      <div class="acupoint-boundary"><b>安全界線</b><p>穴位內容屬傳統自我照護與身體覺察參考，不代替診斷或治療。只做輕柔、短時間按觸；有傷口、腫熱、劇痛、近期手術或身體狀況不明時先不要按。孕期與治療中請先詢問合格專業人員。</p></div>
+      <p class="acupoint-source">位置名稱參照 <a href="https://www.who.int/publications/i/item/9290611057" target="_blank" rel="noopener">WHO 標準穴位命名資料</a>；安全原則參照 <a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH</a> 與醫療機構衛教。本站僅示意體表區域，不教導針刺。</p>
     </div></section>
 
     <section class="section seasonal" id="seasonal" aria-labelledby="seasonalTitle"><div class="wrap">
@@ -123,7 +161,7 @@
     <section class="section guide" id="guide"><div class="wrap guide-grid"><div><div class="eyebrow">HOW TO USE</div><h2>簡單三步，安心開始芳香生活</h2><p>精油濃度高，少量、稀釋、觀察反應是最重要的基本原則。本站不提供內服建議。</p></div><div class="methods"><div class="method"><span>01</span><div><h3>擴香</h3><p>依設備說明少量使用，保持空氣流通，從短時間開始並觀察家人與寵物反應。</p></div></div><div class="method"><span>02</span><div><h3>嗅吸</h3><p>使用嗅吸棒或紙巾，保持適當距離輕柔嗅聞；不舒服時立即停止並移到通風處。</p></div></div><div class="method"><span>03</span><div><h3>稀釋外用</h3><p>以植物油稀釋並做小範圍測試，避免眼周、黏膜、耳內與受損肌膚。</p></div></div></div></div></section>
     <section class="safety" id="safety"><div class="wrap safety-panel"><div class="eyebrow">SAFETY FIRST</div><h2>香氣很溫柔，使用仍需有界線</h2><div class="safety-grid"><article><h3>特殊族群先詢問</h3><p>孕哺期、兒童、慢性病、服藥者與寵物家庭，使用前先詢問專業人員。</p></article><article><h3>先少量再觀察</h3><p>低濃度、小範圍、短時間開始；出現刺激、頭暈或不適立即停用。</p></article><article><h3>不取代醫療</h3><p>精油可成為日常芳香照護的一部分，但不能診斷、治療或延誤就醫。</p></article></div></div></section>
   </main>
-  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#seasonal">節氣照護</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#sleep">認識睡眠</a><a href="#elder-care">陪伴長輩</a><a href="#workplace-care">公司同仁</a><a href="#oils">精油探索</a><a href="./membership.html">會員制度</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
+  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#needRoutes">照護需求路線</a><a href="#acupoints">中醫穴道</a><a href="#seasonal">二十四節氣</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#sleep">認識睡眠</a><a href="#elder-care">陪伴長輩</a><a href="#workplace-care">公司同仁</a><a href="#oils">精油探索</a><a href="./membership.html">會員制度</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
   <div class="member-overlay hidden" id="memberOverlay" aria-hidden="true"></div>
   <div id="overlay"></div><button class="launcher" data-chat>問問 AI 芳香助手</button>
   <script src="./oils.js?v=20260610-2"></script>

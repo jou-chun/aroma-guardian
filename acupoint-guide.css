@@ -1,0 +1,116 @@
+.need-routes{overflow:hidden;background:linear-gradient(180deg,#f7f4eb,#eef3ea)}
+.need-routes-head,.acupoint-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:38px;gap:40px}
+.need-routes-head>div:first-child,.acupoint-heading>div:first-child{max-width:720px}
+.need-routes-head p,.acupoint-heading p{margin:0;color:var(--muted)}
+.point-line-key{display:grid;flex:0 0 auto;gap:7px;color:#637269;font-size:.68rem;font-weight:800}
+.point-line-key span{display:flex;align-items:center;gap:8px}
+.point-line-key i{display:block;width:26px;height:7px;border-radius:999px;background:#efaa88}
+.point-line-key span:nth-child(2) i{height:2px;background:#66836d}
+.point-line-key span:nth-child(3) i{height:12px;background:#dce8d6}
+.need-route-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}
+.need-route{position:relative;min-height:168px;overflow:hidden;border:1px solid #506c581f;border-radius:23px;padding:20px;background:#ffffffc7;text-align:left;transition:border-color .2s,transform .2s,box-shadow .2s}
+.need-route:before{position:absolute;right:-18px;bottom:-24px;width:80px;height:80px;border-radius:50%;background:var(--route-soft,#e6ede1);content:"";transition:transform .3s}
+.need-route:hover,.need-route:focus-visible{border-color:var(--route,#53705c);box-shadow:0 17px 42px #263a3014;transform:translateY(-3px)}
+.need-route:hover:before,.need-route:focus-visible:before{transform:scale(1.25)}
+.need-route[aria-pressed="true"]{border-color:var(--route,#53705c);background:#fff;box-shadow:0 17px 42px #263a3018}
+.need-route[hidden]{display:none}
+.need-route-icon{display:grid;place-items:center;width:45px;height:45px;margin-bottom:18px;border-radius:15px;background:var(--route-soft,#e6ede1);color:var(--route,#53705c);font-size:1.2rem}
+.need-route b{position:relative;z-index:1;display:block;font-family:"Noto Serif TC","Songti TC",serif;font-size:.96rem}
+.need-route small{position:relative;z-index:1;display:block;margin-top:5px;color:var(--muted);font-size:.65rem;line-height:1.5}
+.need-more{display:flex;align-items:center;margin:22px auto 0;border:0;background:transparent;color:var(--sage);font-size:.76rem;font-weight:800;gap:8px}
+.need-more span{display:grid;place-items:center;width:24px;height:24px;border:1px solid #53705c55;border-radius:50%;transition:transform .2s}
+.need-more[aria-expanded="true"] span{transform:rotate(45deg)}
+.need-route-result{position:relative;display:grid;grid-template-columns:100px 1fr 1.05fr;align-items:center;min-height:165px;margin-top:28px;overflow:hidden;border-radius:27px;padding:25px 28px;background:#263a30;color:#fff;gap:27px}
+.need-route-result small{color:#afc1b2;font-size:.62rem;font-weight:800;letter-spacing:.17em}
+.need-route-result h3{margin:5px 0 7px;color:#fff;font:800 1.25rem "Noto Serif TC","Songti TC",serif}
+.need-route-result p{margin:0;color:#ccd6cd;font-size:.77rem}
+.need-route-line{position:relative;width:86px;height:86px}
+.need-route-line span{position:absolute;top:41px;left:7px;width:72px;height:2px;background:#ffffff35}
+.need-route-line span:after{position:absolute;top:0;left:0;width:0;height:100%;background:#f2b594;content:""}
+.need-route-result.is-active .need-route-line span:after{animation:route-draw .8s ease forwards}
+.need-route-line i,.need-route-line b{position:absolute;top:34px;width:16px;height:16px;border:3px solid #263a30;border-radius:50%;background:#8fa38e;box-shadow:0 0 0 2px #ffffff44}
+.need-route-line i{left:0}.need-route-line b{right:0}
+.need-route-result.is-active .need-route-line b{animation:route-arrive .8s .45s both}
+.need-route-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.need-route-links a,.need-route-links button{border:1px solid #ffffff2e;border-radius:999px;padding:9px 13px;background:#ffffff0d;color:#fff;font-size:.7rem;font-weight:800}
+.need-route-links a:hover,.need-route-links button:hover{background:#fff;color:#263a30}
+.need-route-note{margin:18px 0 0;color:var(--muted);font-size:.7rem;text-align:center}
+
+.acupoint-section{overflow:hidden;background:radial-gradient(circle at 8% 20%,#f1c7a34a,transparent 22%),radial-gradient(circle at 92% 72%,#bdd3c34f,transparent 24%),#fbfaf5}
+.acupoint-series-badge{display:flex;align-items:center;flex:0 0 auto;border-left:1px solid #53705c3b;padding-left:24px;color:var(--sage);gap:12px}
+.acupoint-series-badge b{font:800 2.6rem/1 "Noto Serif TC","Songti TC",serif}
+.acupoint-series-badge span{font-size:.68rem;font-weight:800;line-height:1.5}
+.acupoint-explorer{display:grid;grid-template-columns:.95fr 1.05fr;align-items:stretch;gap:18px}
+.acupoint-map-panel,.acupoint-card{min-height:650px;border:1px solid #45625218;border-radius:34px;background:#fff;box-shadow:0 24px 70px #263a3010}
+.acupoint-map-panel{position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#eef4e9,#faf3e8)}
+.acupoint-map-panel:before,.acupoint-map-panel:after{position:absolute;border:1px solid #607b6830;border-radius:50%;content:""}
+.acupoint-map-panel:before{width:430px;height:430px}
+.acupoint-map-panel:after{width:330px;height:330px;border-style:dashed}
+.drop-guide{position:absolute;z-index:4;top:24px;left:24px;display:flex;align-items:center;gap:10px}
+.drop-guide p{max-width:115px;margin:0;color:#65746b;font-size:.65rem;font-weight:800;line-height:1.45}
+.drop-mascot{position:relative;width:58px;height:68px;border:3px solid #4d766d;border-radius:52% 48% 50% 50% / 66% 66% 34% 34%;background:linear-gradient(145deg,#d9f0ea,#8dc5bd);box-shadow:0 10px 20px #456b6325;transform-origin:50% 85%;animation:drop-bob 3s ease-in-out infinite}
+.drop-mascot:before{position:absolute;top:-10px;left:14px;width:25px;height:29px;border-radius:4px 80% 4px 80%;background:#bfe2da;content:"";transform:rotate(45deg)}
+.drop-eye{position:absolute;z-index:1;top:27px;width:6px;height:8px;border-radius:50%;background:#35524b;animation:drop-blink 4.5s infinite}
+.drop-eye.left{left:16px}.drop-eye.right{right:16px}
+.drop-smile{position:absolute;z-index:1;top:40px;left:23px;width:12px;height:7px;border-bottom:2px solid #35524b;border-radius:0 0 12px 12px}
+.drop-arm{position:absolute;z-index:-1;top:34px;right:-13px;width:20px;height:3px;border-radius:999px;background:#4d766d;transform-origin:left center;animation:drop-wave 1.6s ease-in-out infinite}
+.drop-arm:after{position:absolute;right:-2px;bottom:0;width:8px;height:3px;border-radius:999px;background:#4d766d;content:"";transform:rotate(-55deg);transform-origin:right center}
+.body-map{position:relative;z-index:2;width:310px;height:550px;margin-top:40px}
+.body-silhouette span{position:absolute;display:block;background:linear-gradient(145deg,#718b78,#486553);box-shadow:inset -12px -5px 18px #2944351d}
+.body-head{top:14px;left:119px;width:72px;height:86px;border-radius:47% 47% 45% 45%}
+.body-neck{top:91px;left:139px;width:32px;height:35px;border-radius:8px}
+.body-torso{top:111px;left:88px;width:134px;height:224px;border-radius:48px 48px 30px 30px;clip-path:polygon(18% 0,82% 0,100% 30%,82% 100%,18% 100%,0 30%)}
+.body-arm{top:125px;width:41px;height:243px;border-radius:24px;transform-origin:top center}
+.body-arm.left{left:58px;transform:rotate(8deg)}.body-arm.right{right:58px;transform:rotate(-8deg)}
+.body-leg{top:315px;width:55px;height:222px;border-radius:20px 20px 28px 28px}
+.body-leg.left{left:94px;transform:rotate(2deg)}.body-leg.right{right:94px;transform:rotate(-2deg)}
+.acupoint-dot{position:absolute;z-index:3;display:grid;place-items:center;width:27px;height:27px;border:0;border-radius:50%;padding:0;background:#fff;color:#365246;box-shadow:0 0 0 5px #efaa8870,0 7px 18px #263a3040;font-size:.57rem;font-weight:900;transform:translate(-50%,-50%);transition:transform .2s,background .2s,color .2s}
+.acupoint-dot:after{position:absolute;inset:-9px;border:1px solid #efaa88;border-radius:50%;content:"";opacity:0}
+.acupoint-dot:hover,.acupoint-dot:focus-visible{transform:translate(-50%,-50%) scale(1.16)}
+.acupoint-dot[aria-pressed="true"]{background:#efaa88;color:#fff;transform:translate(-50%,-50%) scale(1.18)}
+.acupoint-dot[aria-pressed="true"]:after{animation:point-pulse 1.8s ease-out infinite}
+.body-view-note{position:absolute;z-index:4;right:20px;bottom:18px;left:20px;display:flex;align-items:center;justify-content:center;margin:0;color:#65746b;font-size:.61rem;text-align:center;gap:8px}
+.body-view-note span{width:18px;height:1px;background:#8ba091}
+.acupoint-card{display:flex;flex-direction:column;padding:38px;background:#fff}
+.acupoint-card.is-changing{animation:card-in .38s ease}
+.acupoint-card-top{display:flex;align-items:start;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.acupoint-card-top small{color:var(--sage);font-size:.66rem;font-weight:800;letter-spacing:.16em}
+.acupoint-card-top h3{margin:4px 0 0;font:800 clamp(2.4rem,5vw,3.8rem)/1.15 "Noto Serif TC","Songti TC",serif}
+.acupoint-card-top p{margin:4px 0 0;color:#8b978f;font-size:.7rem;font-weight:800;letter-spacing:.12em}
+.acupoint-card-top>span{color:#e7bbb0;font:800 3.3rem/1 "Noto Serif TC","Songti TC",serif}
+.acupoint-info{display:grid;grid-template-columns:1fr 1fr;padding:24px 0;gap:22px}
+.acupoint-card h4{margin:0 0 7px;color:#3a5547;font:800 .82rem "Noto Serif TC","Songti TC",serif}
+.acupoint-info p,.acupoint-how li{margin:0;color:var(--muted);font-size:.74rem;line-height:1.75}
+.acupoint-how{display:grid;grid-template-columns:82px 1fr;align-items:center;border-radius:20px;padding:18px 20px;background:#f1f5ee;gap:14px}
+.acupoint-how ol{padding-left:18px;margin:0}
+.touch-pulse{position:relative;display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:#fff}
+.touch-pulse:before,.touch-pulse:after{position:absolute;width:20px;height:20px;border:2px solid #efaa88;border-radius:50%;content:"";animation:touch-ring 2s ease-out infinite}
+.touch-pulse:after{animation-delay:.7s}
+.touch-pulse i{width:12px;height:12px;border-radius:50%;background:#efaa88}
+.acupoint-related{padding:20px 0}
+.acupoint-related>b{display:block;margin-bottom:9px;font-size:.7rem}
+.acupoint-related div{display:flex;flex-wrap:wrap;gap:7px}
+.acupoint-related button{border:1px solid #d5dfd5;border-radius:999px;padding:7px 11px;background:#fff;color:var(--sage);font-size:.66rem;font-weight:800}
+.acupoint-warning{margin-top:auto;border-left:3px solid #d39179;padding:11px 14px;background:#fff4ed;color:#765f55;font-size:.67rem;line-height:1.65}
+.acupoint-controls{display:flex;justify-content:space-between;padding-top:20px;gap:8px}
+.acupoint-controls button{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;color:var(--sage);font-size:.65rem;font-weight:800}
+.acupoint-controls #acupointReplay{border-color:#53705c;background:#53705c;color:#fff}
+.acupoint-boundary{display:grid;grid-template-columns:90px 1fr;margin-top:16px;border-radius:18px;padding:20px 24px;background:#293f34;color:#fff;gap:20px}
+.acupoint-boundary b{color:#f2b594;font-family:"Noto Serif TC","Songti TC",serif}
+.acupoint-boundary p{margin:0;color:#d6ded7;font-size:.72rem}
+.acupoint-source{margin:14px 8px 0;color:var(--muted);font-size:.64rem;text-align:center}
+.acupoint-source a{color:var(--sage);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+
+@keyframes route-draw{to{width:100%}}
+@keyframes route-arrive{0%{transform:scale(.3);background:#f2b594}70%{transform:scale(1.3);background:#f2b594}100%{transform:scale(1)}}
+@keyframes drop-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes drop-blink{0%,45%,49%,100%{transform:scaleY(1)}47%{transform:scaleY(.1)}}
+@keyframes drop-wave{0%,100%{transform:rotate(-25deg)}50%{transform:rotate(25deg)}}
+@keyframes point-pulse{0%{opacity:.8;transform:scale(.65)}100%{opacity:0;transform:scale(1.65)}}
+@keyframes touch-ring{0%{opacity:.75;transform:scale(.5)}100%{opacity:0;transform:scale(2.6)}}
+@keyframes card-in{0%{opacity:.65;transform:translateY(7px)}100%{opacity:1;transform:none}}
+
+@media(max-width:1050px){.need-route-grid{grid-template-columns:repeat(3,1fr)}.acupoint-explorer{grid-template-columns:1fr}.acupoint-map-panel{min-height:650px}.acupoint-card{min-height:600px}}
+@media(max-width:700px){.need-routes-head,.acupoint-heading{align-items:start;flex-direction:column}.point-line-key{grid-template-columns:repeat(3,1fr);width:100%}.need-route-grid{grid-template-columns:repeat(2,1fr)}.need-route{min-height:150px}.need-route-result{grid-template-columns:65px 1fr;padding:22px}.need-route-line{width:58px}.need-route-links{grid-column:1/-1;justify-content:flex-start}.acupoint-series-badge{border-left:0;padding-left:0}.acupoint-map-panel{min-height:610px}.acupoint-card{min-height:auto;padding:28px 20px}.acupoint-info{grid-template-columns:1fr}.acupoint-boundary{grid-template-columns:1fr;gap:5px}}
+@media(max-width:460px){.point-line-key{font-size:.58rem}.need-route{min-height:140px;padding:16px}.need-route-icon{margin-bottom:12px}.body-map{transform:scale(.9)}.acupoint-map-panel{min-height:570px}.drop-guide p{display:none}.acupoint-card-top>span{font-size:2.4rem}.acupoint-how{grid-template-columns:1fr}.touch-pulse{margin:auto}.acupoint-controls{flex-wrap:wrap}.acupoint-controls #acupointReplay{order:-1;width:100%}}
+@media(prefers-reduced-motion:reduce){.drop-mascot,.drop-eye,.drop-arm,.acupoint-dot:after,.touch-pulse:before,.touch-pulse:after,.need-route-result.is-active .need-route-line span:after,.need-route-result.is-active .need-route-line b,.acupoint-card.is-changing{animation:none!important}.need-route-result.is-active .need-route-line span:after{width:100%}}
