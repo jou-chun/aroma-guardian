@@ -29,9 +29,11 @@
   </style>
   <link rel="stylesheet" href="./member.css?v=20260905-2">
   <link rel="stylesheet" href="./seasonal.css?v=20260907-1">
+  <link rel="stylesheet" href="./care-path.css?v=20261024-1">
   <script defer src="./member-config.js?v=20260818-1"></script>
   <script defer src="./member.js?v=20260905-2"></script>
   <script defer src="./seasonal.js?v=20260907-1"></script>
+  <script defer src="./care-path.js?v=20261024-1"></script>
 </head>
 <body>
   <header class="top">
@@ -44,11 +46,27 @@
   </header>
   <main>
     <section class="hero" id="top"><div class="wrap hero-in">
-      <div class="hero-copy"><div class="eyebrow">doTERRA 精油知識 × AI 芳香助手</div><h1>讓每一滴香氣，<span>成為照顧自己的開始。</span></h1><p class="lead">從單方、複方、日常照護主題到五大隱形毒素生活防護網，以清楚的繁體中文，陪你建立有根據、也有界線的芳香生活。</p><div class="actions"><a class="btn" href="#toxins">閱讀生活防護網</a><button class="btn alt" data-chat>詢問 AI 小助手</button></div><div class="stats"><div><b>54</b><small>款單方</small></div><div><b>32</b><small>款複方</small></div><div><b>5</b><small>大暴露主題</small></div></div></div>
+      <div class="hero-copy"><div class="eyebrow">doTERRA 精油知識 × AI 芳香助手</div><h1>讓每一滴香氣，<span>成為照顧自己的開始。</span></h1><div class="hero-care-entry"><h2>今天，你想照顧誰？</h2><p>選一座小島，從需要開始找到適合的照護方式。</p><div class="care-choices" id="careChoices" aria-label="選擇今天想照顧的對象"></div></div><p class="lead">從單方、複方、日常照護主題到五大隱形毒素生活防護網，以清楚的繁體中文，陪你建立有根據、也有界線的芳香生活。</p><div class="actions"><a class="btn" href="#toxins">閱讀生活防護網</a><button class="btn alt" data-chat>詢問 AI 小助手</button></div><div class="stats"><div><b>54</b><small>款單方</small></div><div><b>32</b><small>款複方</small></div><div><b>5</b><small>大暴露主題</small></div></div></div>
       <div class="hero-art" aria-hidden="true"><div class="orb"></div><div class="bottle"><div class="label"><b>馨香守護</b><small>ESSENTIAL OIL GUIDE</small></div></div><div class="float-card"><small>今日探索</small><b>先理解，再選擇香氣</b></div></div>
     </div></section>
 
-    <section class="section"><div class="wrap"><div class="heading center"><div class="eyebrow">START HERE</div><h2>這個網站不只是一張精油清單</h2><p>先選問題、再看理由與安全方法，最後才決定哪一款香氣適合當下。</p></div><div class="paths"><a class="path" href="#oils"><span class="num">01</span><h3>認識單方精油</h3><p>從一種植物開始，了解香氣、成分與適合的日常情境。</p><b>查看 54 款單方 →</b></a><a class="path" href="#oils"><span class="num">02</span><h3>探索複方精油</h3><p>看懂不同香氣如何搭配，依生活節奏找到方向。</p><b>查看 32 款複方 →</b></a><a class="path" href="#guide"><span class="num">03</span><h3>學會安全使用</h3><p>掌握擴香、嗅吸與稀釋外用，避開常見風險。</p><b>前往使用指南 →</b></a><a class="path" href="#toxins"><span class="num">04</span><h3>五大隱形毒素</h3><p>認識空氣、黴菌、清潔、容器與皮膚接觸中的日常暴露。</p><b>建立生活防護網 →</b></a></div></div></section>
+    <section class="section care-path" id="carePath" aria-labelledby="carePathTitle"><div class="wrap">
+      <div class="care-path-intro"><div><div class="eyebrow">YOUR CARE ROUTE</div><h2 id="carePathTitle">從關心開始，找到可以做的下一步</h2><p>點選首頁的小島後，這裡會用動畫帶你看見「想照顧什麼、如何陪伴、怎麼使用」。</p></div><span>三步照護引導</span></div>
+      <div class="care-route" id="careRoute" aria-live="polite">
+        <div class="care-route-head"><div><small id="careRouteKicker">YOUR CARE ROUTE</small><h3 id="careRouteTitle">選一個問題，路線就會在這裡亮起來</h3></div><button type="button" id="careReplay" class="care-replay" hidden>再看一次動畫</button></div>
+        <div class="care-track" id="careTrack" aria-hidden="true"><span></span><i></i></div>
+        <div class="care-stages" id="careStages">
+          <article data-care-stage="0"><b>01</b><small>想照顧誰</small><h4>先從關心的對象開始</h4><p>不需要先懂精油名稱，從今天想陪伴的人開始。</p></article>
+          <article data-care-stage="1"><b>02</b><small>如何處理</small><h4>看見適合的方向</h4><p>先釐清來源與安全界線，再決定是否需要芳香陪伴。</p></article>
+          <article data-care-stage="2"><b>03</b><small>跟著使用</small><h4>一步一步做</h4><p>畫面會依序示範使用方式，完成後再進入完整內容。</p></article>
+        </div>
+        <div class="care-use" id="careUse" hidden>
+          <div class="care-use-visual" id="careUseVisual" aria-hidden="true"><span></span><b>跟著做</b></div>
+          <div><small>HOW TO USE</small><h3 id="careUseTitle"></h3><ol id="careUseSteps"></ol><a class="btn" id="careDestination" href="#topics">查看完整內容</a></div>
+        </div>
+      </div>
+      <p class="care-path-note">芳香照護用於日常生活陪伴；若有明顯、持續或加重的不適，請優先尋求專業醫療協助。</p>
+    </div></section>
 
     <section class="section seasonal" id="seasonal" aria-labelledby="seasonalTitle"><div class="wrap">
       <div class="seasonal-head"><div><div class="eyebrow">24 SOLAR TERMS · 白露</div><h2 id="seasonalTitle">涼意初生，跟著節氣照顧呼吸</h2><p class="lead">白露後早晚轉涼、空氣漸乾。從空間香氣、胸前塗抹到三次慢呼吸，選一個現在做得到的小步驟。</p></div><div class="seasonal-stamp" aria-label="目前節氣：白露"><small>本期節氣</small><strong>白露</strong><span>養肺潤燥</span></div></div>
@@ -91,12 +109,31 @@
       <p class="source-note">依你提供的台灣電子書、睡眠整理文件與現有精油資料重新撰寫；持續失眠或白天功能明顯受影響時，請尋求醫療專業協助。</p>
     </div></section>
 
+    <section class="section audience-section" id="elder-care"><div class="wrap">
+      <div class="audience-head"><div><div class="eyebrow">GENTLE COMPANIONSHIP</div><h2>陪伴長輩，從熟悉與舒服開始</h2></div><p>先詢問長輩喜不喜歡這個氣味，不追求濃度，也不把芳香當成治療。陪伴、觸碰與一起活動，才是這段時間的主角。</p></div>
+      <div class="audience-grid">
+        <article class="audience-card"><span>🌿</span><h3>長者芳香陪伴</h3><p>選擇一種長輩熟悉、願意接受的氣味，以聞香紙或短時間空間芳香開始，並保留無香休息區。</p><ol><li>先問氣味喜好</li><li>少量、短時間</li><li>不舒服立即停止</li></ol></article>
+        <article class="audience-card audience-card-image"><img src="./assets/elder-hand-care.png" alt="手部照護示意圖" loading="lazy"><span>🤲</span><h3>手部照護</h3><p>以無香植物油或極低濃度芳香按摩完整肌膚，配合緩慢、輕柔的手部動作，留意皮膚狀態。</p><ol><li>先看皮膚是否完整</li><li>少量塗抹並觀察</li><li>避開傷口與刺激處</li></ol></article>
+        <article class="audience-card"><span>☀️</span><h3>樂齡芳香活動</h3><p>用聞香、說故事、簡單手部活動與分享記憶組成小活動，重點是參與感，不考答案也不勉強聞香。</p><ol><li>一種氣味開始</li><li>搭配簡單動作</li><li>讓每個人自由分享</li></ol></article>
+      </div>
+      <p class="source-note">長輩若有呼吸道疾病、認知障礙、皮膚問題、服藥或正在接受治療，使用芳香產品前請先詢問醫療專業人員。</p>
+    </div></section>
+
+    <section class="section audience-section workplace" id="workplace-care"><div class="wrap">
+      <div class="audience-head"><div><div class="eyebrow">WORKPLACE WELLBEING</div><h2>照顧公司同仁，從不打擾的休息開始</h2></div><p>辦公室是共享空間。所有芳香活動都應尊重同仁的氣味選擇，採自願參加、低氣味與可退出的設計。</p></div>
+      <div class="audience-grid">
+        <article class="audience-card"><span>☕</span><h3>午休舒緩</h3><p>設計十分鐘的無香呼吸、肩頸伸展或個人聞香選項，避免在整間辦公室強制擴香。</p><ol><li>先離開工作訊息</li><li>伸展與放鬆肩膀</li><li>自由選擇是否聞香</li></ol></article>
+        <article class="audience-card"><span>🧑‍🤝‍🧑</span><h3>員工芳香課程</h3><p>從安全使用、氣味偏好與日常壓力轉換開始，安排可實作、可帶回座位使用的個人方案。</p><ol><li>認識安全界線</li><li>選擇個人氣味</li><li>完成自己的照護步驟</li></ol></article>
+        <article class="audience-card"><span>💬</span><h3>合作洽詢</h3><p>可依公司人數、時間與場地，規劃午休體驗、員工講座或主題式芳香活動。</p><button class="btn alt" type="button" data-chat>先討論活動需求</button></article>
+      </div>
+    </div></section>
+
     <section class="section library" id="oils"><div class="wrap"><div class="library-head"><div><div class="eyebrow">OIL LIBRARY</div><h2>探索精油資料庫</h2><p>依名稱、香氣或日常情境搜尋，點開可看完整使用方式與提醒。</p></div><input class="search" id="search" placeholder="搜尋精油、香氣或情境…" aria-label="搜尋精油"></div><div class="filters" id="types"></div><div class="filters" id="tags"></div><div class="meta" id="meta"></div><div class="grid" id="grid"></div><button class="btn alt more" id="more">顯示更多</button></div></section>
 
     <section class="section guide" id="guide"><div class="wrap guide-grid"><div><div class="eyebrow">HOW TO USE</div><h2>簡單三步，安心開始芳香生活</h2><p>精油濃度高，少量、稀釋、觀察反應是最重要的基本原則。本站不提供內服建議。</p></div><div class="methods"><div class="method"><span>01</span><div><h3>擴香</h3><p>依設備說明少量使用，保持空氣流通，從短時間開始並觀察家人與寵物反應。</p></div></div><div class="method"><span>02</span><div><h3>嗅吸</h3><p>使用嗅吸棒或紙巾，保持適當距離輕柔嗅聞；不舒服時立即停止並移到通風處。</p></div></div><div class="method"><span>03</span><div><h3>稀釋外用</h3><p>以植物油稀釋並做小範圍測試，避免眼周、黏膜、耳內與受損肌膚。</p></div></div></div></div></section>
     <section class="safety" id="safety"><div class="wrap safety-panel"><div class="eyebrow">SAFETY FIRST</div><h2>香氣很溫柔，使用仍需有界線</h2><div class="safety-grid"><article><h3>特殊族群先詢問</h3><p>孕哺期、兒童、慢性病、服藥者與寵物家庭，使用前先詢問專業人員。</p></article><article><h3>先少量再觀察</h3><p>低濃度、小範圍、短時間開始；出現刺激、頭暈或不適立即停用。</p></article><article><h3>不取代醫療</h3><p>精油可成為日常芳香照護的一部分，但不能診斷、治療或延誤就醫。</p></article></div></div></section>
   </main>
-  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#seasonal">節氣照護</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#newProduct">元氣煥能複方油</a><a href="#sleep">認識睡眠</a><a href="#oils">精油探索</a><a href="./membership.html">會員制度</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
+  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="#top"><span class="mark"></span><span><b>馨香守護</b><small>AROMA GUARDIAN</small></span></a><p>讓精油知識更清楚，讓芳香生活更安心。</p></div><div><h2>快速前往</h2><a href="#seasonal">節氣照護</a><a href="#topics">日常主題</a><a href="#toxins">生活防護網</a><a href="#sleep">認識睡眠</a><a href="#elder-care">陪伴長輩</a><a href="#workplace-care">公司同仁</a><a href="#oils">精油探索</a><a href="./membership.html">會員制度</a></div><div><h2>本站原則</h2><p>先辨認並減少暴露來源，芳香只作生活陪伴。</p><p>不提供疾病診斷、排毒療程、內服或治療劑量。</p><p>品牌資料僅作產品與分類查核，本站文字與視覺均重新整理。</p></div></div><div class="wrap footer-bottom"><p>© 2026 馨香守護｜獨立 doTERRA Wellness Advocate</p><p>內容僅供芳香與生活教育，不可取代專業醫療建議。</p></div></footer>
   <div class="member-overlay hidden" id="memberOverlay" aria-hidden="true"></div>
   <div id="overlay"></div><button class="launcher" data-chat>問問 AI 芳香助手</button>
   <script src="./oils.js?v=20260610-2"></script>
