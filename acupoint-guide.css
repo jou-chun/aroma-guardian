@@ -130,3 +130,9 @@
 @media(max-width:400px){.meridian-shortcuts>span{flex-basis:100%}}
 .map-point-label.is-left:not([hidden]){transform:translate(calc(-100% - 22px),8px)}
 .map-point-label.is-left:before{right:auto;left:100%;top:8px}
+
+.acupoint-map-column{min-width:0}
+.acupoint-map-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 4px}
+.acupoint-map-tools button{min-height:48px;border:0;border-radius:999px;padding:10px 20px;background:#456252;color:#fff;font:800 .95rem/1.5 inherit;cursor:pointer}
+.acupoint-map-tools p{flex:1;min-width:180px;margin:0;color:#526458;font-size:.8rem;line-height:1.6}
+.drop-walker,.drop-guide,.acupoint-map-panel:before,.acupoint-map-panel:after{pointer-events:none}

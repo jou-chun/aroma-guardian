@@ -76,16 +76,21 @@
   let currentPoint = 0;
   let walkerPosition = {x:22,y:22};
   let walkerAnimation;
+  let routeAnimation;
   let resizeTimer;
+  let mapSize = {width:0,height:0};
 
   routeGrid.innerHTML = routes.map((route,index) => `<button class="need-route" type="button" data-route="${route.id}" aria-pressed="false" ${index > 5 ? "hidden" : ""} style="--route:${route.color};--route-soft:${route.soft}"><span class="need-route-icon" aria-hidden="true">${route.icon}</span><b>${route.name}</b><small>${route.short}</small></button>`).join("");
 
-  function moveDropToPoint(point, replayFromStart = false, animate = true) {
+  function moveDropToPoint(point, replayFromStart = false, animate = true, explicitPlayback = false) {
     const dot = pointDots.querySelector(`[data-point="${point.id}"]`);
     if (!dot || !mapPanel || !dropWalker || !dropRouteSvg || !dropRoutePath || !dropRouteTarget) return;
     if (walkerAnimation) walkerAnimation.cancel();
+    if (routeAnimation) routeAnimation.cancel();
+    dropWalker.classList.remove("is-walking");
 
     const panelRect = mapPanel.getBoundingClientRect();
+    mapSize = {width:panelRect.width,height:panelRect.height};
     const dotRect = dot.getBoundingClientRect();
     const walkerSize = dropWalker.offsetWidth;
     const home = {x:parseFloat(getComputedStyle(dropWalker).left) || 22,y:parseFloat(getComputedStyle(dropWalker).top) || 22};
@@ -113,7 +118,7 @@
     void dropRouteSvg.getBoundingClientRect();
     dropRouteSvg.classList.add("is-drawing");
 
-    const shouldAnimate = animate && !reduceMotion.matches;
+    const shouldAnimate = animate && (!reduceMotion.matches || explicitPlayback);
     if (replayFromStart) {
       walkerPosition = home;
       dropWalker.style.transform = `translate(${home.x - home.x}px,${home.y - home.y}px)`;
@@ -133,8 +138,8 @@
       return {transform:`translate(${x-home.x}px,${y-home.y}px)`,offset:t};
     });
     dropWalker.classList.add("is-walking");
-    dropRoutePath.animate([{strokeDashoffset:routeLength},{strokeDashoffset:0}],{duration:1450,easing:"ease-in-out",fill:"forwards"});
-    walkerAnimation = dropWalker.animate(frames,{duration:1250,easing:"cubic-bezier(.45,.05,.2,1)",fill:"forwards"});
+    routeAnimation = dropRoutePath.animate([{strokeDashoffset:routeLength},{strokeDashoffset:0}],{duration:2100,easing:"ease-in-out",fill:"forwards"});
+    walkerAnimation = dropWalker.animate(frames,{duration:1900,easing:"cubic-bezier(.45,.05,.2,1)",fill:"forwards"});
     walkerAnimation.addEventListener("finish",() => {
       dropWalker.style.transform = `translate(${destination.x-home.x}px,${destination.y-home.y}px)`;
       dropWalker.classList.remove("is-walking");
@@ -143,9 +148,10 @@
     walkerPosition = destination;
   }
 
-  function selectPoint(id, shouldScroll = false, replayFromStart = false) {
+  function selectPoint(id, shouldScroll = false, replayFromStart = false, explicitPlayback = false) {
     const index = points.findIndex(point => point.id === id);
     if (index < 0) return;
+    const repeatPoint = currentPoint === index;
     currentPoint = index;
     const point = points[index];
     document.querySelectorAll(".acupoint-dot").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.point === id)));
@@ -181,7 +187,7 @@
       selectRoute(button.dataset.relatedRoute);
       document.querySelector("#needRoutes").scrollIntoView({behavior:"smooth",block:"start"});
     }));
-    requestAnimationFrame(() => moveDropToPoint(point,replayFromStart));
+    requestAnimationFrame(() => moveDropToPoint(point,replayFromStart || repeatPoint,true,explicitPlayback));
     if (shouldScroll) document.querySelector("#acupoints").scrollIntoView({behavior:"smooth",block:"start"});
   }
 
@@ -220,9 +226,19 @@
   meridianButtons.forEach(button => button.addEventListener("click", () => selectPoint(button.dataset.meridianPoint)));
   document.querySelector("#acupointPrev").addEventListener("click", () => selectPoint(points[(currentPoint - 1 + points.length) % points.length].id));
   document.querySelector("#acupointNext").addEventListener("click", () => selectPoint(points[(currentPoint + 1) % points.length].id));
-  document.querySelector("#acupointReplay").addEventListener("click", () => selectPoint(points[currentPoint].id,false,true));
+  function replayPoint() {
+    mapPanel.scrollIntoView({behavior:"instant",block:"center"});
+    selectPoint(points[currentPoint].id,false,true,true);
+  }
+  document.querySelector("#acupointReplay").addEventListener("click", replayPoint);
+  document.querySelector("#acupointMapReplay").addEventListener("click", replayPoint);
+  document.querySelector("#acupointMotionHint").textContent = reduceMotion.matches
+    ? "目前使用減少動態模式，按播放可看一次帶路動畫。"
+    : "點穴位看小水滴帶路，也可以按播放重新看一次。";
 
   window.addEventListener("resize",() => {
+    const bounds = mapPanel.getBoundingClientRect();
+    if (bounds.width === mapSize.width && bounds.height === mapSize.height) return;
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => moveDropToPoint(points[currentPoint],false,false),120);
   });
