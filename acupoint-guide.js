@@ -24,7 +24,9 @@
     {id:"weizhong",name:"委中",code:"WEIZHONG · BL40",region:"膝後",x:64,y:65,index:"10",location:"位於膝蓋後方橫紋的中央附近。此處有重要血管與神經，只作位置認識。",care:"傳統照護資料常提到此穴與腰腿活動的關聯，但自行照護只適合非常輕柔的接觸。",steps:["坐下並讓膝蓋自然彎曲。","只用指腹輕觸膝後橫紋中央。","不要深壓、重揉或長時間停留。"],related:["movement"],warning:"膝後不可深壓。若腿部腫、熱、紅、疼痛，或懷疑血管問題，請停止按摩並立即尋求醫療評估。"},
     {id:"yongquan",name:"湧泉",code:"YONGQUAN · KI1",region:"足底",x:39,y:96,index:"11",location:"位於腳底前段，腳趾微微彎曲時，足底前方較明顯的凹陷附近；左右腳各一。",care:"傳統自我照護中，常以輕柔足部按摩作為睡前安定與腳底放鬆的陪伴。",steps:["坐穩後把腳放在容易觸及的位置。","以拇指腹輕柔畫圈或停留。","完成後穿上止滑鞋襪，避免立即踩滑。"],related:["sleep","circulation"],warning:"足底有傷口、感染、感覺遲鈍或糖尿病足風險者，不要自行用力按摩，請先詢問醫療專業人員。"},
     {id:"taichong",name:"太衝",code:"TAICHONG · LR3",region:"腳背",x:62,y:96,index:"12",meridian:"足厥陰肝經",meridianLabel:"肝經",meridianRoute:"從腳背往上，經過小腿與大腿內側。",location:"在腳背，大拇趾與第二趾之間，沿兩根腳掌骨往腳踝方向摸，在兩骨交會前的凹陷處。",care:"先認識太衝在腳背的位置。左右腳各有一個太衝。",steps:["坐穩，把一隻腳放在容易看見的位置。","從大拇趾與第二趾之間，沿腳背往腳踝方向找。","找到大約位置就好，手指輕放即可。"],related:["circulation"],warning:"腳背有傷口、紅腫、疼痛或感覺異常時，先避免按觸。"},
-    {id:"shaoshang",name:"少商",code:"SHAOSHANG · LU11",region:"拇指",x:84,y:68,index:"13",meridian:"手太陰肺經",meridianLabel:"肺經",meridianRoute:"從前胸沿手臂內側一路走到拇指。",location:"在拇指末端，靠拇指外側的指甲角旁。",care:"先用拇指的指甲角當地標，認識肺經走到手指的位置。",steps:["把手放鬆，找到拇指指甲。","看拇指外側的指甲角旁，辨認位置即可。"],related:["breath"],warning:"指甲周圍若有傷口或紅腫，請避免按壓。"}
+    {id:"shaoshang",name:"少商",code:"SHAOSHANG · LU11",region:"拇指",x:84,y:68,index:"13",meridian:"手太陰肺經",meridianLabel:"肺經",meridianRoute:"從前胸沿手臂內側一路走到拇指。",location:"在拇指末端，靠拇指外側的指甲角旁。",care:"先用拇指的指甲角當地標，認識肺經走到手指的位置。",steps:["把手放鬆，找到拇指指甲。","看拇指外側的指甲角旁，辨認位置即可。"],related:["breath"],warning:"指甲周圍若有傷口或紅腫，請避免按壓。"},
+    {id:"shenmen",name:"神門",code:"SHENMEN · HT7",region:"手腕掌側",x:20,y:57,index:"14",meridian:"手少陰心經",meridianLabel:"心經",meridianRoute:"心經的體表路線沿手臂內側到手腕的小指側，再往小指。",location:"手掌朝上，找手腕橫紋的小指側，神門在尺側腕屈肌腱的拇指側凹陷。",care:"先認手腕橫紋和小指側的位置，可配合自然呼吸。",steps:["把前臂放在桌上，掌心朝上。","沿手腕橫紋往小指側找，指腹輕放片刻。"],related:["sleep","emotion"],warning:"手腕有傷口、腫痛或麻木時，先避免按觸。"},
+    {id:"neiguan",name:"內關",code:"NEIGUAN · PC6",region:"前臂掌側",x:77,y:55,index:"15",meridian:"手厥陰心包經",meridianLabel:"心包經",meridianRoute:"心包經的體表路線從胸部沿手臂內側到手掌，再往中指。",location:"手掌朝上，在手腕掌側橫紋往手肘約兩寸，位於兩條肌腱之間。",care:"用手腕橫紋作地標，認識前臂掌側的位置。",steps:["把手掌翻向上。","從掌側腕橫紋往手肘找，可用自己約三指寬作粗略參考。","找到兩筋間後，指腹輕放即可。"],related:["emotion","digestion"],warning:"按觸若引起刺痛或麻感，請放開。"}
   ];
 
   const routeGrid = document.querySelector("#needRouteGrid");
@@ -50,9 +52,20 @@
     cardamom: {name:"豆蔻",points:["sanyinjiao"]},
     eucalyptus: {name:"尤加利",points:["shaoshang"]},
     fennel: {name:"甜茴香",points:["sanyinjiao"]},
-    geranium: {name:"天竺葵",points:["taichong"]}
+    geranium: {name:"天竺葵",points:["taichong"]},
+    "helichrysum": {"name": "永久花", "points": ["taichong"]},
+    "lavender": {"name": "薰衣草", "points": ["sanyinjiao", "shenmen"]},
+    "marjoram": {"name": "馬鬱蘭", "points": ["sanyinjiao", "shenmen"]},
+    "neroli": {"name": "橙花", "points": ["shenmen"]},
+    "patchouli": {"name": "廣藿香", "points": ["sanyinjiao"]},
+    "roman-chamomile": {"name": "羅馬洋甘菊", "points": ["neiguan"]},
+    "sandalwood": {"name": "檀香", "points": ["sanyinjiao"]},
+    "thyme": {"name": "百里香", "points": ["hegu"]},
+    "vetiver": {"name": "岩蘭草", "points": ["shenmen"]},
+    "wild-orange": {"name": "野橘", "points": ["taichong"]},
+    "ylang-ylang": {"name": "依蘭依蘭", "points": ["sanyinjiao"]}
   };
-  const pointDefaults = {hegu:"arborvitae",taichong:"arborvitae",sanyinjiao:"basil",shaoshang:"eucalyptus"};
+  const pointDefaults = {hegu:"arborvitae",taichong:"arborvitae",sanyinjiao:"basil",shaoshang:"eucalyptus",shenmen:"vetiver",neiguan:"roman-chamomile"};
   const query = new URLSearchParams(window.location.search);
   const mapPointLabel = document.querySelector("#mapPointLabel");
   const meridianCaption = document.querySelector("#meridianCaption");
@@ -137,7 +150,7 @@
     meridianButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.meridianPoint === id)));
     mapPointLabel.hidden = meridianCaption.hidden = !point.meridian;
     if (point.meridian) {
-      mapPointLabel.classList.toggle("is-left", point.id === "shaoshang");
+      mapPointLabel.classList.toggle("is-left", point.x > 70);
       mapPointLabel.style.left = `${point.x}%`;
       mapPointLabel.style.top = `${point.y}%`;
       mapPointLabel.querySelector("strong").textContent = point.name;
