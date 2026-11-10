@@ -115,3 +115,24 @@
 @media(max-width:700px){.need-routes-head,.acupoint-heading{align-items:start;flex-direction:column}.point-line-key{grid-template-columns:repeat(3,1fr);width:100%}.need-route-grid{grid-template-columns:repeat(2,1fr)}.need-route{min-height:150px}.need-route-result{grid-template-columns:65px 1fr;padding:22px}.need-route-line{width:58px}.need-route-links{grid-column:1/-1;justify-content:flex-start}.acupoint-series-badge{border-left:0;padding-left:0}.acupoint-map-panel{min-height:610px}.acupoint-card{min-height:auto;padding:28px 20px}.acupoint-info{grid-template-columns:1fr}.acupoint-boundary{grid-template-columns:1fr;gap:5px}}
 @media(max-width:460px){.point-line-key{font-size:.58rem}.need-route{min-height:140px;padding:16px}.need-route-icon{margin-bottom:12px}.body-map{transform:scale(.9)}.acupoint-map-panel{min-height:570px}.drop-guide{top:20px;right:18px;left:auto;max-width:142px}.drop-walker{top:18px;left:18px;width:70px;height:70px}.drop-logo{width:70px;height:70px}.acupoint-card-top>span{font-size:2.4rem}.acupoint-how{grid-template-columns:1fr}.touch-pulse{margin:auto}.acupoint-controls{flex-wrap:wrap}.acupoint-controls #acupointReplay{order:-1;width:100%}}
 @media(prefers-reduced-motion:reduce){.drop-logo,.drop-walker.is-walking .drop-logo,.drop-route-svg.is-drawing circle,.acupoint-dot:after,.touch-pulse:before,.touch-pulse:after,.need-route-result.is-active .need-route-line span:after,.need-route-result.is-active .need-route-line b,.acupoint-card.is-changing{animation:none!important}.need-route-result.is-active .need-route-line span:after{width:100%}}
+
+.meridian-shortcuts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-15px 0 15px}
+.meridian-shortcuts>span{margin-right:4px;color:var(--muted);font-size:.85rem;font-weight:700}
+.meridian-shortcuts button{min-height:44px;border:1px solid #c9d7ca;border-radius:999px;padding:6px 14px;background:#fff;color:#365246;font-weight:800;font-size:.85rem}
+.meridian-shortcuts button[aria-pressed="true"]{border-color:#456252;background:#456252;color:#fff}
+.meridian-shortcuts button:focus-visible{outline:2px solid #765448;outline-offset:3px}
+.map-point-label:not([hidden]){position:absolute;z-index:5;display:grid;transform:translate(22px,-50%);border:1px solid #dce6dc;border-radius:10px;padding:4px 7px;background:#fffdf8;color:#365246;white-space:nowrap;line-height:1.4;box-shadow:0 4px 14px #263a3024;pointer-events:none}
+.map-point-label:before{position:absolute;right:100%;top:50%;width:7px;border-top:1px solid #587560;content:""}
+.map-point-label strong{font-size:.9rem}
+.map-point-label span{font-size:.7rem;font-weight:700}
+.meridian-caption:not([hidden]){display:grid;gap:3px;margin:0 0 16px;border-left:3px solid #91ac95;padding:8px 12px;background:#f2f6ef;color:#365246;font-size:.82rem}
+.meridian-caption a{display:inline-flex;align-items:center;width:fit-content;min-height:44px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:400px){.meridian-shortcuts>span{flex-basis:100%}}
+.map-point-label.is-left:not([hidden]){transform:translate(calc(-100% - 22px),8px)}
+.map-point-label.is-left:before{right:auto;left:100%;top:8px}
+
+.acupoint-map-column{min-width:0}
+.acupoint-map-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 4px}
+.acupoint-map-tools button{min-height:48px;border:0;border-radius:999px;padding:10px 20px;background:#456252;color:#fff;font:800 .95rem/1.5 inherit;cursor:pointer}
+.acupoint-map-tools p{flex:1;min-width:180px;margin:0;color:#526458;font-size:.8rem;line-height:1.6}
+.drop-walker,.drop-guide,.acupoint-map-panel:before,.acupoint-map-panel:after{pointer-events:none}
