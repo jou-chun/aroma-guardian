@@ -53,6 +53,8 @@
     eucalyptus: {name:"尤加利",points:["shaoshang"]},
     fennel: {name:"甜茴香",points:["sanyinjiao"]},
     geranium: {name:"天竺葵",points:["taichong"]},
+    jasmine: {name:"茉莉",points:["shenmen"]},
+    oregano: {name:"牛至",points:["taichong"]},
     "helichrysum": {"name": "永久花", "points": ["taichong"]},
     "lavender": {"name": "薰衣草", "points": ["sanyinjiao", "shenmen"]},
     "marjoram": {"name": "馬鬱蘭", "points": ["sanyinjiao", "shenmen"]},
