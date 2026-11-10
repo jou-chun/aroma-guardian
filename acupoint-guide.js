@@ -20,10 +20,11 @@
     {id:"guanyuan",name:"關元",code:"GUANYUAN · CV4",region:"下腹部",x:50,y:53,index:"06",location:"位於腹部正中線，肚臍下方約三橫指寬的區域；以大約位置作日常覺察即可。",care:"傳統自我照護中，常以手掌溫暖覆蓋，作為下腹放鬆與休息的陪伴。",steps:["搓暖雙手後覆在下腹。","只用手掌重量，不向內深壓。","自然呼吸 3～5 次後移開。"],related:["digestion"],warning:"孕期、急性腹痛、異常出血或近期腹部手術時不要自行按壓，請先詢問專業人員。"},
     {id:"hegu",name:"合谷",code:"HEGU · LI4",region:"手背",x:15,y:66,index:"07",meridian:"手陽明大腸經",meridianLabel:"大腸經",meridianRoute:"從手部往上，沿手臂到肩頸，再到鼻旁。",location:"位於手背，拇指與食指掌骨之間的肌肉隆起處；左右手各一。",care:"傳統自我照護中，常作為手部放鬆與日間精神轉換的參考位置。",steps:["手掌放鬆，用另一手拇指找到虎口肌肉。","輕輕按住或畫小圈，不捏到疼痛。","短暫按觸後換手。"],related:["movement","focus","skin"],warning:"孕期不自行按壓合谷；手部受傷、紅腫、麻木或疼痛不明時先停止。"},
     {id:"zusanli",name:"足三里",code:"ZUSANLI · ST36",region:"小腿外側",x:62,y:67,index:"08",location:"在膝蓋外側下方約四橫指寬，脛骨前緣外側的肌肉處；左右腿各一。",care:"傳統自我照護中，常用於日常活動後的腿部陪伴與身體節奏覺察。",steps:["坐穩後讓小腿放鬆。","以指腹在膝下外側肌肉輕按。","感覺舒適即可，左右各短暫停留。"],related:["digestion","circulation","focus"],warning:"膝腿若突然腫、熱、紅、劇痛，或近期受傷與手術，請不要按摩並先就醫評估。"},
-    {id:"sanyinjiao",name:"三陰交",code:"SANYINJIAO · SP6",region:"小腿內側",x:42,y:80,index:"09",location:"位於內踝最高點上方約四橫指寬，脛骨內側後緣附近；左右腿各一。",care:"傳統自我照護中，常作為下肢放鬆與休息時的覺察位置。",steps:["坐著露出內踝上方位置。","用指腹輕貼脛骨內側後緣。","短暫輕按後放開，不追求強烈感受。"],related:["circulation"],warning:"孕期不自行按壓三陰交；小腿有不明腫痛、靜脈問題或傷口時請先詢問專業人員。"},
+    {id:"sanyinjiao",name:"三陰交",code:"SANYINJIAO · SP6",region:"小腿內側",x:42,y:80,index:"09",meridian:"足太陰脾經",meridianLabel:"脾經",meridianRoute:"從大拇趾出發，經內踝，沿小腿內側往上。",location:"位於內踝最高點上方約四橫指寬，脛骨內側後緣附近；左右腿各一。",care:"傳統自我照護中，常作為下肢放鬆與休息時的覺察位置。",steps:["坐著露出內踝上方位置。","用指腹輕貼脛骨內側後緣。","短暫輕按後放開，不追求強烈感受。"],related:["circulation"],warning:"孕期不自行按壓三陰交；小腿有不明腫痛、靜脈問題或傷口時請先詢問專業人員。"},
     {id:"weizhong",name:"委中",code:"WEIZHONG · BL40",region:"膝後",x:64,y:65,index:"10",location:"位於膝蓋後方橫紋的中央附近。此處有重要血管與神經，只作位置認識。",care:"傳統照護資料常提到此穴與腰腿活動的關聯，但自行照護只適合非常輕柔的接觸。",steps:["坐下並讓膝蓋自然彎曲。","只用指腹輕觸膝後橫紋中央。","不要深壓、重揉或長時間停留。"],related:["movement"],warning:"膝後不可深壓。若腿部腫、熱、紅、疼痛，或懷疑血管問題，請停止按摩並立即尋求醫療評估。"},
     {id:"yongquan",name:"湧泉",code:"YONGQUAN · KI1",region:"足底",x:39,y:96,index:"11",location:"位於腳底前段，腳趾微微彎曲時，足底前方較明顯的凹陷附近；左右腳各一。",care:"傳統自我照護中，常以輕柔足部按摩作為睡前安定與腳底放鬆的陪伴。",steps:["坐穩後把腳放在容易觸及的位置。","以拇指腹輕柔畫圈或停留。","完成後穿上止滑鞋襪，避免立即踩滑。"],related:["sleep","circulation"],warning:"足底有傷口、感染、感覺遲鈍或糖尿病足風險者，不要自行用力按摩，請先詢問醫療專業人員。"},
-    {id:"taichong",name:"太衝",code:"TAICHONG · LR3",region:"腳背",x:62,y:96,index:"12",meridian:"足厥陰肝經",meridianLabel:"肝經",meridianRoute:"從腳背往上，經過小腿與大腿內側。",location:"在腳背，大拇趾與第二趾之間，沿兩根腳掌骨往腳踝方向摸，在兩骨交會前的凹陷處。",care:"先認識太衝在腳背的位置。左右腳各有一個太衝。",steps:["坐穩，把一隻腳放在容易看見的位置。","從大拇趾與第二趾之間，沿腳背往腳踝方向找。","找到大約位置就好，手指輕放即可。"],related:["circulation"],warning:"腳背有傷口、紅腫、疼痛或感覺異常時，先避免按觸。"}
+    {id:"taichong",name:"太衝",code:"TAICHONG · LR3",region:"腳背",x:62,y:96,index:"12",meridian:"足厥陰肝經",meridianLabel:"肝經",meridianRoute:"從腳背往上，經過小腿與大腿內側。",location:"在腳背，大拇趾與第二趾之間，沿兩根腳掌骨往腳踝方向摸，在兩骨交會前的凹陷處。",care:"先認識太衝在腳背的位置。左右腳各有一個太衝。",steps:["坐穩，把一隻腳放在容易看見的位置。","從大拇趾與第二趾之間，沿腳背往腳踝方向找。","找到大約位置就好，手指輕放即可。"],related:["circulation"],warning:"腳背有傷口、紅腫、疼痛或感覺異常時，先避免按觸。"},
+    {id:"shaoshang",name:"少商",code:"SHAOSHANG · LU11",region:"拇指",x:84,y:68,index:"13",meridian:"手太陰肺經",meridianLabel:"肺經",meridianRoute:"從前胸沿手臂內側一路走到拇指。",location:"在拇指末端，靠拇指外側的指甲角旁。",care:"先用拇指的指甲角當地標，認識肺經走到手指的位置。",steps:["把手放鬆，找到拇指指甲。","看拇指外側的指甲角旁，辨認位置即可。"],related:["breath"],warning:"指甲周圍若有傷口或紅腫，請避免按壓。"}
   ];
 
   const routeGrid = document.querySelector("#needRouteGrid");
@@ -43,6 +44,16 @@
   const dropRouteSvg = document.querySelector("#dropRouteSvg");
   const dropRoutePath = document.querySelector("#dropRoutePath");
   const dropRouteTarget = document.querySelector("#dropRouteTarget");
+  const seriesArticles = {
+    arborvitae: {name:"側柏",points:["hegu","taichong"]},
+    basil: {name:"羅勒",points:["sanyinjiao"]},
+    cardamom: {name:"豆蔻",points:["sanyinjiao"]},
+    eucalyptus: {name:"尤加利",points:["shaoshang"]},
+    fennel: {name:"甜茴香",points:["sanyinjiao"]},
+    geranium: {name:"天竺葵",points:["taichong"]}
+  };
+  const pointDefaults = {hegu:"arborvitae",taichong:"arborvitae",sanyinjiao:"basil",shaoshang:"eucalyptus"};
+  const query = new URLSearchParams(window.location.search);
   const mapPointLabel = document.querySelector("#mapPointLabel");
   const meridianCaption = document.querySelector("#meridianCaption");
   const meridianButtons = document.querySelectorAll("[data-meridian-point]");
@@ -126,12 +137,18 @@
     meridianButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.meridianPoint === id)));
     mapPointLabel.hidden = meridianCaption.hidden = !point.meridian;
     if (point.meridian) {
+      mapPointLabel.classList.toggle("is-left", point.id === "shaoshang");
       mapPointLabel.style.left = `${point.x}%`;
       mapPointLabel.style.top = `${point.y}%`;
       mapPointLabel.querySelector("strong").textContent = point.name;
       mapPointLabel.querySelector("span").textContent = point.meridianLabel;
       meridianCaption.querySelector("strong").textContent = point.meridian;
       meridianCaption.querySelector("span").textContent = point.meridianRoute;
+      const articleLink = meridianCaption.querySelector("a");
+      const source = query.get("series");
+      const article = Object.hasOwn(seriesArticles, source) && seriesArticles[source].points.includes(id) ? source : pointDefaults[id];
+      articleLink.href = `./${article}.html#meridian-title`;
+      articleLink.textContent = `看${seriesArticles[article].name}篇的經絡對照 →`;
     }
     document.querySelector("#acupointRegion").textContent = point.region;
     document.querySelector("#acupointName").textContent = point.name;
@@ -195,6 +212,6 @@
     resizeTimer = window.setTimeout(() => moveDropToPoint(points[currentPoint],false,false),120);
   });
 
-  const linkedPoint = new URLSearchParams(window.location.search).get("acupoint");
+  const linkedPoint = query.get("acupoint");
   selectPoint(points.find(point => point.id === linkedPoint)?.id ?? points[0].id);
 })();

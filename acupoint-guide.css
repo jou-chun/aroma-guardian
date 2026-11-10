@@ -128,3 +128,5 @@
 .meridian-caption:not([hidden]){display:grid;gap:3px;margin:0 0 16px;border-left:3px solid #91ac95;padding:8px 12px;background:#f2f6ef;color:#365246;font-size:.82rem}
 .meridian-caption a{display:inline-flex;align-items:center;width:fit-content;min-height:44px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:400px){.meridian-shortcuts>span{flex-basis:100%}}
+.map-point-label.is-left:not([hidden]){transform:translate(calc(-100% - 22px),8px)}
+.map-point-label.is-left:before{right:auto;left:100%;top:8px}
