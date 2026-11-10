@@ -18,11 +18,12 @@
     {id:"danzhong",name:"膻中",code:"DANZHONG · CV17",region:"胸前",x:50,y:29,index:"04",location:"位於胸骨正中線，約在兩側乳頭連線的中央附近；只以胸骨表面作定位參考。",care:"傳統自我照護中，可配合緩慢呼吸，作為胸前放鬆與身體覺察的位置。",steps:["手掌輕放胸骨中央，不用力壓。","吸氣時感受胸口起伏，吐氣稍微放慢。","做 3 次舒適呼吸後放開。"],related:["breath","emotion"],warning:"若有胸痛、胸悶、呼吸困難、冒冷汗或不適延伸到手臂與下顎，請立刻尋求醫療協助，不要按穴等待。"},
     {id:"zhongwan",name:"中脘",code:"ZHONGWAN · CV12",region:"上腹部",x:50,y:41,index:"05",location:"位於腹部正中線，肚臍上方約四橫指寬的區域；個人體型不同，以大約位置理解即可。",care:"傳統自我照護中，常作為飲食後腹部舒適與消化節奏的覺察位置。",steps:["坐著或躺著，先讓腹部放鬆。","以溫暖手掌輕放，不做深壓。","配合自然呼吸停留片刻。"],related:["digestion"],warning:"急性或不明原因腹痛、發燒、嘔吐、懷孕、近期腹部手術時，不要自行按壓。"},
     {id:"guanyuan",name:"關元",code:"GUANYUAN · CV4",region:"下腹部",x:50,y:53,index:"06",location:"位於腹部正中線，肚臍下方約三橫指寬的區域；以大約位置作日常覺察即可。",care:"傳統自我照護中，常以手掌溫暖覆蓋，作為下腹放鬆與休息的陪伴。",steps:["搓暖雙手後覆在下腹。","只用手掌重量，不向內深壓。","自然呼吸 3～5 次後移開。"],related:["digestion"],warning:"孕期、急性腹痛、異常出血或近期腹部手術時不要自行按壓，請先詢問專業人員。"},
-    {id:"hegu",name:"合谷",code:"HEGU · LI4",region:"手部",x:17,y:52,index:"07",location:"位於手背，拇指與食指掌骨之間的肌肉隆起處；左右手各一。",care:"傳統自我照護中，常作為手部放鬆與日間精神轉換的參考位置。",steps:["手掌放鬆，用另一手拇指找到虎口肌肉。","輕輕按住或畫小圈，不捏到疼痛。","短暫按觸後換手。"],related:["movement","focus","skin"],warning:"孕期不自行按壓合谷；手部受傷、紅腫、麻木或疼痛不明時先停止。"},
+    {id:"hegu",name:"合谷",code:"HEGU · LI4",region:"手背",x:15,y:66,index:"07",meridian:"手陽明大腸經",meridianLabel:"大腸經",meridianRoute:"從手部往上，沿手臂到肩頸，再到鼻旁。",location:"位於手背，拇指與食指掌骨之間的肌肉隆起處；左右手各一。",care:"傳統自我照護中，常作為手部放鬆與日間精神轉換的參考位置。",steps:["手掌放鬆，用另一手拇指找到虎口肌肉。","輕輕按住或畫小圈，不捏到疼痛。","短暫按觸後換手。"],related:["movement","focus","skin"],warning:"孕期不自行按壓合谷；手部受傷、紅腫、麻木或疼痛不明時先停止。"},
     {id:"zusanli",name:"足三里",code:"ZUSANLI · ST36",region:"小腿外側",x:62,y:67,index:"08",location:"在膝蓋外側下方約四橫指寬，脛骨前緣外側的肌肉處；左右腿各一。",care:"傳統自我照護中，常用於日常活動後的腿部陪伴與身體節奏覺察。",steps:["坐穩後讓小腿放鬆。","以指腹在膝下外側肌肉輕按。","感覺舒適即可，左右各短暫停留。"],related:["digestion","circulation","focus"],warning:"膝腿若突然腫、熱、紅、劇痛，或近期受傷與手術，請不要按摩並先就醫評估。"},
     {id:"sanyinjiao",name:"三陰交",code:"SANYINJIAO · SP6",region:"小腿內側",x:42,y:80,index:"09",location:"位於內踝最高點上方約四橫指寬，脛骨內側後緣附近；左右腿各一。",care:"傳統自我照護中，常作為下肢放鬆與休息時的覺察位置。",steps:["坐著露出內踝上方位置。","用指腹輕貼脛骨內側後緣。","短暫輕按後放開，不追求強烈感受。"],related:["circulation"],warning:"孕期不自行按壓三陰交；小腿有不明腫痛、靜脈問題或傷口時請先詢問專業人員。"},
     {id:"weizhong",name:"委中",code:"WEIZHONG · BL40",region:"膝後",x:64,y:65,index:"10",location:"位於膝蓋後方橫紋的中央附近。此處有重要血管與神經，只作位置認識。",care:"傳統照護資料常提到此穴與腰腿活動的關聯，但自行照護只適合非常輕柔的接觸。",steps:["坐下並讓膝蓋自然彎曲。","只用指腹輕觸膝後橫紋中央。","不要深壓、重揉或長時間停留。"],related:["movement"],warning:"膝後不可深壓。若腿部腫、熱、紅、疼痛，或懷疑血管問題，請停止按摩並立即尋求醫療評估。"},
-    {id:"yongquan",name:"湧泉",code:"YONGQUAN · KI1",region:"足底",x:39,y:96,index:"11",location:"位於腳底前段，腳趾微微彎曲時，足底前方較明顯的凹陷附近；左右腳各一。",care:"傳統自我照護中，常以輕柔足部按摩作為睡前安定與腳底放鬆的陪伴。",steps:["坐穩後把腳放在容易觸及的位置。","以拇指腹輕柔畫圈或停留。","完成後穿上止滑鞋襪，避免立即踩滑。"],related:["sleep","circulation"],warning:"足底有傷口、感染、感覺遲鈍或糖尿病足風險者，不要自行用力按摩，請先詢問醫療專業人員。"}
+    {id:"yongquan",name:"湧泉",code:"YONGQUAN · KI1",region:"足底",x:39,y:96,index:"11",location:"位於腳底前段，腳趾微微彎曲時，足底前方較明顯的凹陷附近；左右腳各一。",care:"傳統自我照護中，常以輕柔足部按摩作為睡前安定與腳底放鬆的陪伴。",steps:["坐穩後把腳放在容易觸及的位置。","以拇指腹輕柔畫圈或停留。","完成後穿上止滑鞋襪，避免立即踩滑。"],related:["sleep","circulation"],warning:"足底有傷口、感染、感覺遲鈍或糖尿病足風險者，不要自行用力按摩，請先詢問醫療專業人員。"},
+    {id:"taichong",name:"太衝",code:"TAICHONG · LR3",region:"腳背",x:62,y:96,index:"12",meridian:"足厥陰肝經",meridianLabel:"肝經",meridianRoute:"從腳背往上，經過小腿與大腿內側。",location:"在腳背，大拇趾與第二趾之間，沿兩根腳掌骨往腳踝方向摸，在兩骨交會前的凹陷處。",care:"先認識太衝在腳背的位置。左右腳各有一個太衝。",steps:["坐穩，把一隻腳放在容易看見的位置。","從大拇趾與第二趾之間，沿腳背往腳踝方向找。","找到大約位置就好，手指輕放即可。"],related:["circulation"],warning:"腳背有傷口、紅腫、疼痛或感覺異常時，先避免按觸。"}
   ];
 
   const routeGrid = document.querySelector("#needRouteGrid");
@@ -42,6 +43,9 @@
   const dropRouteSvg = document.querySelector("#dropRouteSvg");
   const dropRoutePath = document.querySelector("#dropRoutePath");
   const dropRouteTarget = document.querySelector("#dropRouteTarget");
+  const mapPointLabel = document.querySelector("#mapPointLabel");
+  const meridianCaption = document.querySelector("#meridianCaption");
+  const meridianButtons = document.querySelectorAll("[data-meridian-point]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let currentPoint = 0;
   let walkerPosition = {x:22,y:22};
@@ -119,6 +123,16 @@
     currentPoint = index;
     const point = points[index];
     document.querySelectorAll(".acupoint-dot").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.point === id)));
+    meridianButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.meridianPoint === id)));
+    mapPointLabel.hidden = meridianCaption.hidden = !point.meridian;
+    if (point.meridian) {
+      mapPointLabel.style.left = `${point.x}%`;
+      mapPointLabel.style.top = `${point.y}%`;
+      mapPointLabel.querySelector("strong").textContent = point.name;
+      mapPointLabel.querySelector("span").textContent = point.meridianLabel;
+      meridianCaption.querySelector("strong").textContent = point.meridian;
+      meridianCaption.querySelector("span").textContent = point.meridianRoute;
+    }
     document.querySelector("#acupointRegion").textContent = point.region;
     document.querySelector("#acupointName").textContent = point.name;
     document.querySelector("#acupointPinyin").textContent = point.code;
@@ -171,6 +185,7 @@
 
   pointDots.innerHTML = points.map(point => `<button type="button" class="acupoint-dot" data-point="${point.id}" aria-label="${point.name}・${point.region}" aria-pressed="false" style="left:${point.x}%;top:${point.y}%">${point.index}</button>`).join("");
   pointDots.querySelectorAll(".acupoint-dot").forEach(button => button.addEventListener("click", () => selectPoint(button.dataset.point)));
+  meridianButtons.forEach(button => button.addEventListener("click", () => selectPoint(button.dataset.meridianPoint)));
   document.querySelector("#acupointPrev").addEventListener("click", () => selectPoint(points[(currentPoint - 1 + points.length) % points.length].id));
   document.querySelector("#acupointNext").addEventListener("click", () => selectPoint(points[(currentPoint + 1) % points.length].id));
   document.querySelector("#acupointReplay").addEventListener("click", () => selectPoint(points[currentPoint].id,false,true));
@@ -180,5 +195,6 @@
     resizeTimer = window.setTimeout(() => moveDropToPoint(points[currentPoint],false,false),120);
   });
 
-  selectPoint(points[0].id);
+  const linkedPoint = new URLSearchParams(window.location.search).get("acupoint");
+  selectPoint(points.find(point => point.id === linkedPoint)?.id ?? points[0].id);
 })();
